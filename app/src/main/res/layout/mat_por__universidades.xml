@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Vistas.orientacion.Orientacion"
+    android:orientation="vertical"
+    android:layout_gravity="center"
+    android:background="#dfdfdf"
+>
+
+    <TextView
+        android:id="@+id/tUniversidad"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:elegantTextHeight="true"
+        android:padding="15dp"
+        android:text="Carreras profesiones ofertadas"
+        android:textAlignment="center"
+        android:textAllCaps="false"
+        android:textColor="@color/primary_dark"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/buscar"
+        android:layout_width="250dp"
+        android:layout_height="30dp"
+        android:layout_gravity="center"
+        android:layout_margin="10dp"
+        android:layout_weight="0"
+        android:background="@color/plomo"
+        android:drawableLeft="@drawable/buscar"
+        android:ems="15"
+        android:hint="Buscar"
+        android:inputType="textPersonName" />
+
+    <ListView
+        android:id="@+id/listCarreras"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_weight="6"
+        android:background="#cca5b7ca"
+        android:divider="@color/celeste"
+        android:dividerHeight="1dp"
+        android:scrollbars="vertical" />
+
+    <TextView
+        android:id="@+id/textoS"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginBottom="5dp"
+        android:layout_marginTop="10dp"
+        android:layout_weight="0"
+        android:padding="2dp"
+        android:text="Nota: ´S´ Semestral, ´A´ Anual"
+        android:textColor="@color/plomo"
+        android:textSize="16sp"
+        android:textStyle="bold" />
+
+
+</LinearLayout>

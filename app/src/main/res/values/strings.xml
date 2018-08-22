@@ -1,0 +1,41 @@
+<resources>
+    <string name="app_name">BIESSAP</string>
+    <string name="version">0.0.1</string>
+    <string name="desarrollo">Desarrollado por JOSE UGARTE</string>
+
+    <string name="title_activity_login">Sign in</string>
+
+
+    <string name="title_activity_home">KIBA</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Jose Urgate</string>
+    <string name="nav_header_subtitle">12354678</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Configuración</string>
+    <string name="button_label_enabled">Configuración</string>
+
+    <!-- Strings related to login -->
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Contraseña</string>
+    <string name="action_sign_in">Sign in or register</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="error_invalid_email">This email address is invalid</string>
+    <string name="error_invalid_password">This password is too short</string>
+    <string name="error_incorrect_password">This password is incorrect</string>
+    <string name="error_field_required">Los Campos son requeridos</string>
+    <string name="permission_rationale">"Contacts permissions are needed for providing email
+        completions."
+    </string>
+    <!-- Preguntas -->
+    <string name="siguiente">Siguiente</string>
+    <string name="si">Si</string>
+    <string name="no">No</string>
+    <string name="inicio">Inicio</string>
+    <string name="informacion">Información General</string>
+    <string name="perfil">Perfil Profesional</string>
+    <string name="pregunta">Contacts permissions are needed for providing email
+        completions.</string>
+    <string name="universidades">Universidades</string>
+    <string name="title_activity_mapa_ubicacion">Map</string>
+</resources>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/plomo"
+    android:orientation="vertical"
+    tools:context=".Vistas.Universidades.Mapa_interno">
+
+    <TextView
+        android:id="@+id/textTitulo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0"
+        android:text="Mapa interno de la Universidad UDABOL"
+        android:textAlignment="center"
+        android:textColor="@color/primary_dark"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <ImageView
+        android:id="@+id/imgaMapa"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_weight="6"
+        app:srcCompat="@drawable/mapa" />
+
+    <Button
+        android:id="@+id/btnInicio"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginBottom="5dp"
+        android:layout_marginTop="10dp"
+        android:layout_weight="0"
+        android:background="@drawable/boton_primario_oscuro"
+        android:drawableLeft="@drawable/ic_home_white"
+        android:foreground="?android:attr/selectableItemBackground"
+        android:padding="2dp"
+        android:text="@string/inicio"
+        android:textAllCaps="false"
+        android:textColor="@color/blanco"
+        android:textSize="16sp"
+        android:textStyle="bold" />
+</LinearLayout>

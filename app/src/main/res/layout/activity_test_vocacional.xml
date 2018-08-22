@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Vistas.prueba.Test_vocacional"
+    android:orientation="vertical">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" />
+
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:elegantTextHeight="true"
+                android:paddingBottom="15dp"
+                android:paddingTop="15dp"
+                android:text="TEST VOCACIONAL"
+                android:textAlignment="center"
+                android:textColor="@color/primary_dark"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+
+            <ImageView
+                android:id="@+id/imageView2"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_weight="5"
+                android:padding="10dp"
+                app:srcCompat="@drawable/fondo1" />
+
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="8dp"
+                android:text="tesytottsdlkjdslkjktesytottsdlkjdslkjkdslkjksytottsdlkjdsljktesylkjktesytottsdlkjdslkjktesytottsdlkjdslkjktesytottsdlkjdslkjkttesytottsdlkjdslkjktesytottsdlkjdslkjksytottsdlkjdslkjktesytottsdlkjdslkjktesytottsdlkjdslkjktesytottsdlkjdslkjktesytottsdlkjdslkjktesytottsdlkjdslkjktesytottsdlkjdslkjktesytottsdlkjdslkjkttesytottsdlkjdslkjktesytottsdlkjdslkjksytottsdlkjdslkjktesytottsdlkjdslkjktesytottsdlkjdslkjktesytottsdlkjdslkjktesytottsdlkjdslkjktesytottsdlkjdslkjktesytottsdlkjdslkjktesytottsdlkjdslkjkttesytottsdlkjdslkjktesytottsdlkjdslkjksytottsdlkjdslkjktesytottsdlkjdslkjktesytottsdlkjdslkjktesytottsdlkjdslkjktesytottsdlkjdslkjktesytottsdlkjdslkjktesytottsdlkjdslkjktesytottsdlkjdslkjkttesytottsdlkjdslkjktesytottsdlkjdslkjksytottsdlkjdslkjktesytottsdlkjdslkjk"
+                android:textAlignment="center"
+                android:textColor="@color/primary_text"
+                android:textSize="18sp" />
+
+            <Button
+                android:foreground="?android:attr/selectableItemBackground"
+                android:id="@+id/btSig"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/boton_secundario"
+                android:text="HACER TEST VOCACIONAL"
+                android:textColor="@color/blanco"
+                android:textStyle="bold"
+                android:layout_marginBottom="10dp"/>
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

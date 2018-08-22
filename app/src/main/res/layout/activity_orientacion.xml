@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:layout_gravity="center">
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:layout_weight="0"
+        android:text="Orientación Universitaria"
+        android:textAlignment="center"
+        android:textColor="@color/primary_dark"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="6">
+<LinearLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:gravity="center">
+
+
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        app:srcCompat="@drawable/fondo1"
+        android:padding="10dp"/>
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="8dp"
+        android:text="tesytottsdlkjdslkjktesytottsdlkjdslkjktesytottsdlkjdslkjktesytottsdlkjdslkjktesytottsdlkjdslkjktesytottsdlkjdslkjkttesytottsdlkjdslkjktesytottsdlkjdslkjksytottsdlklkjmtesytottsdlkjdslkjktesytottsdlkjdslkjktesytottsdlkjdslkjktesytottsdlkjdslkjktesytottsdlkjdslkjktesytottsdlkjdslkjkttesytottsdlkjdslkjktesytottsdlkjdslkjksytottsdlkjdslkjktesytottsdlkjdslkjktesytottsdlkjdslkjktesytottsdlkjdslkjktesytottsdlkjdslkjktesytottsdlkjdslkjktesytottsdlkjdslkjktesytottsdlkjdslkjkttesytottsdlkjdslkjktesytottsdlkjdslkjksytottsdlkjdslkjktesytottsdlkjdslkjktesytottsdlkjdslkjktesytottsdlkjdslkjktesytottsdlkjdslkjktesytottsdlkjdslkjktesytottsdlkjdslkjktesytottsdlkjdslkjkttesytottsdlkjdslkjktesytottsdlkjdslkjksytottsdlkjdslkjktesytottsdlkjdslkjktesytottsdlkjdslkjktesytottsdlkjdslkjktesytottsdlkjdslkjktesytottsdlkjdslkjktesytottsdlkjdslkjktesytottsdlkjdslkjkttesytottsdlkjdslkjktesytottsdlkjdslkjksytottsdlkjdslkjktesytottsdlkjdslkjk"
+        android:textAlignment="center"
+        android:textColor="@color/primary_text"
+        android:textSize="18sp" />
+
+</LinearLayout>
+
+</ScrollView>
+
+    <Button
+        android:id="@+id/btnVer"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_weight="0"
+        android:background="@drawable/boton_secundario"
+        android:padding="2dp"
+        android:foreground="?android:attr/selectableItemBackground"
+        android:text="Ver las carreras y perfiles profesionales"
+        android:textColor="@color/blanco"
+        android:textSize="16sp"
+        android:textStyle="bold" />
+
+
+</LinearLayout>

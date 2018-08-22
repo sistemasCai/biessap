@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Vistas.orientacion.Orientacion"
+    android:orientation="vertical"
+    android:layout_gravity="center">
+
+    <TextView
+        android:id="@+id/tUniversidad"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:elegantTextHeight="true"
+        android:padding="15dp"
+        android:text="@string/universidades"
+        android:textAlignment="center"
+        android:textAllCaps="true"
+        android:textColor="@color/primary_dark"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/buscar"
+        android:layout_width="250dp"
+        android:layout_height="30dp"
+        android:layout_gravity="center"
+        android:layout_margin="10dp"
+        android:layout_weight="0"
+        android:background="@color/plomo"
+        android:drawableLeft="@drawable/buscar"
+        android:ems="15"
+        android:hint="Buscar"
+        android:inputType="textPersonName" />
+
+    <ListView
+        android:id="@+id/listaCarreras"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="6"
+        android:scrollbars="vertical"
+        />
+
+    <Button
+        android:id="@+id/btnInicio"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginBottom="5dp"
+        android:layout_marginTop="10dp"
+        android:layout_weight="0"
+        android:foreground="?android:attr/selectableItemBackground"
+        android:background="@drawable/boton_primario_oscuro"
+        android:drawableLeft="@drawable/ic_home_white"
+        android:padding="2dp"
+        android:text="@string/inicio"
+        android:textAllCaps="false"
+        android:textColor="@color/blanco"
+        android:textSize="16sp"
+        android:textStyle="bold" />
+
+
+</LinearLayout>

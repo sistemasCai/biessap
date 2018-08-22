@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Vistas.orientacion.Orientacion"
+    android:orientation="vertical"
+    android:layout_gravity="center">
+
+    <TextView
+        android:id="@+id/tituloCarrera"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:layout_weight="0"
+        android:text="Titulo"
+        android:textAlignment="center"
+        android:textAllCaps="true"
+        android:textColor="@color/primary_dark"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="6">
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center">
+
+
+            <TextView
+                android:id="@+id/info"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:layout_weight="0"
+                android:text="@string/informacion"
+                android:textAlignment="textStart"
+                android:textAllCaps="false"
+                android:textColor="@color/primary_dark"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+            <TextView
+                android:id="@+id/informacion"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="8dp"
+                android:text="tesytottsdlkjdslkjktesytottsdlkjdslkjktesytottsdlkjdslkjktesytottsdlkjdslkjktesytottsdlkjdslkjktesytottsdlkjdslkjkttesytottsdlkjdslkjktesytottsdlkjdslkjksytottsdlklkjmtesytottsdlkjdslkjktesytottsdlkjdslkjktesytottsdlkjdslkjktesytottsdlkjdslkjktesytottsdlkjdslkjktesytottsdlkjdslkjkttesytottsdlkjdslkjktesytottsdlkjdslkjksytottsdlkjdslkjktesytottsdlkjdslkjktesytottsdlkjdslkjktesytottsdlkjdslkjktesytottsdlkjdslkjktesytottsdlkjdslkjktesytottsdlkjdslkjktesytottsdlkjdslkjkttesytottsdlkjdslkjktesytottsdlkjdslkjksytottsdlkjdslkjktesytottsdlkjdslkjktesytottsdlkjdslkjktesytottsdlkjdslkjktesytottsdlkjdslkjktesytottsdlkjdslkjktesytottsdlkjdslkjktesytottsdlkjdslkjkttesytottsdlkjdslkjktesytottsdlkjdslkjksytottsdlkjdslkjktesytottsdlkjdslkjktesytottsdlkjdslkjktesytottsdlkjdslkjktesytottsdlkjdslkjktesytottsdlkjdslkjktesy"
+                android:textAlignment="center"
+                android:textColor="@color/primary_text"
+                android:textSize="18sp" />
+            <ImageView
+                android:id="@+id/imageView2"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                app:srcCompat="@drawable/fondo1"
+                android:padding="10dp"/>
+            <TextView
+                android:id="@+id/perfil"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:layout_weight="0"
+                android:text="@string/perfil"
+                android:textAlignment="textStart"
+                android:textColor="@color/primary_dark"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+    </ScrollView>
+
+    <Button
+        android:id="@+id/btnInicio"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginBottom="5dp"
+        android:layout_marginTop="10dp"
+        android:layout_weight="0"
+        android:foreground="?android:attr/selectableItemBackground"
+        android:background="@drawable/boton_primario_oscuro"
+        android:drawableLeft="@drawable/ic_home_white"
+        android:padding="2dp"
+        android:text="@string/inicio"
+        android:textAllCaps="false"
+        android:textColor="@color/blanco"
+        android:textSize="16sp"
+        android:textStyle="bold" />
+
+
+</LinearLayout>
