@@ -1,4 +1,4 @@
-package com.biessap.biessap;
+package com.biessap.biessap.Activitys;
 
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
@@ -6,7 +6,9 @@ import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.WindowManager;
+
 import com.biessap.biessap.R;
+
 public class SplashActivity extends AppCompatActivity {
     private final static int DURACION_SPLASH = 1000;
 
@@ -18,7 +20,7 @@ public class SplashActivity extends AppCompatActivity {
         setContentView(R.layout.activity_splash);
         new Handler().postDelayed(new Runnable(){
             public void run(){
-                Intent intent = new Intent(SplashActivity.this, MainActivity.class);
+                Intent intent = new Intent(SplashActivity.this, LoginActivity.class);
                 startActivity(intent);
                 finish();
             };

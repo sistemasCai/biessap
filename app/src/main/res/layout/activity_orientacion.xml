@@ -30,21 +30,12 @@
 
 
 
-    <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="match_parent"
-        android:layout_height="200dp"
-        app:srcCompat="@drawable/fondo1"
-        android:padding="10dp"/>
-
     <TextView
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:padding="8dp"
-        android:text="tesytottsdlkjdslkjktesytottsdlkjdslkjktesytottsdlkjdslkjktesytottsdlkjdslkjktesytottsdlkjdslkjktesytottsdlkjdslkjkttesytottsdlkjdslkjktesytottsdlkjdslkjksytottsdlklkjmtesytottsdlkjdslkjktesytottsdlkjdslkjktesytottsdlkjdslkjktesytottsdlkjdslkjktesytottsdlkjdslkjktesytottsdlkjdslkjkttesytottsdlkjdslkjktesytottsdlkjdslkjksytottsdlkjdslkjktesytottsdlkjdslkjktesytottsdlkjdslkjktesytottsdlkjdslkjktesytottsdlkjdslkjktesytottsdlkjdslkjktesytottsdlkjdslkjktesytottsdlkjdslkjkttesytottsdlkjdslkjktesytottsdlkjdslkjksytottsdlkjdslkjktesytottsdlkjdslkjktesytottsdlkjdslkjktesytottsdlkjdslkjktesytottsdlkjdslkjktesytottsdlkjdslkjktesytottsdlkjdslkjktesytottsdlkjdslkjkttesytottsdlkjdslkjktesytottsdlkjdslkjksytottsdlkjdslkjktesytottsdlkjdslkjktesytottsdlkjdslkjktesytottsdlkjdslkjktesytottsdlkjdslkjktesytottsdlkjdslkjktesytottsdlkjdslkjktesytottsdlkjdslkjkttesytottsdlkjdslkjktesytottsdlkjdslkjksytottsdlkjdslkjktesytottsdlkjdslkjk"
-        android:textAlignment="center"
-        android:textColor="@color/primary_text"
+        android:text="@string/text_orientacion"
         android:textSize="18sp" />
 
 </LinearLayout>
@@ -64,8 +55,6 @@
         android:foreground="?android:attr/selectableItemBackground"
         android:text="Ver las carreras y perfiles profesionales"
         android:textColor="@color/blanco"
-        android:textSize="16sp"
-        android:textStyle="bold" />
-
+        android:textSize="14sp" />
 
 </LinearLayout>

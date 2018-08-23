@@ -36,7 +36,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="8dp"
-                android:text="tesytottsdlkjdslkjktesytottsdlkjdslkjktesytottsdlkjdslkjktesytottsdlkjdslkjktesytottsdlkjdslkjktesytottsdlkjdslkjkttesytottsdlkjdslkjktesytottsdlkjdslkjksytottsdlklkjmtesytottsdlkjdslkjktesytottsdlkjdslkjktesytottsdlkjdslkjktesytottsdlkjdslkjktesytottsdlkjdslkjktesytottsdlkjdslkjkttesytottsdlkjdslkjktesytottsdlkjdslkjksytottsdlkjdslkjktesytottsdlkjdslkjktesytottsdlkjdslkjktesytottsdlkjdslkjktesytottsdlkjdslkjktesytottsdlkjdslkjktesytottsdlkjdslkjktesytottsdlkjdslkjkttesytottsdlkjdslkjktesytottsdlkjdslkjksytottsdlkjdslkjktesytottsdlkjdslkjktesytottsdlkjdslkjktesytottsdlkjdslkjktesytottsdlkjdslkjktesytottsdlkjdslkjktesytottsdlkjdslkjktesytottsdlkjdslkjkttesytottsdlkjdslkjktesytottsdlkjdslkjksytottsdlkjdslkjktesytottsdlkjdslkjktesytottsdlkjdslkjktesytottsdlkjdslkjktesytottsdlkjdslkjktesytottsdlkjdslkjktesytottsdlkjdslkjktesytottsdlkjdslkjkttesytottsdlkjdslkjktesytottsdlkjdslkjksytottsdlkjdslkjktesytottsdlkjdslkjk"
+                android:text="@string/texto_universidad"
                 android:textAlignment="center"
                 android:textColor="@color/primary_text"
                 android:textSize="18sp" />
@@ -55,12 +55,11 @@
         android:layout_weight="0"
         android:background="@drawable/boton_secundario"
         android:foreground="?android:attr/selectableItemBackground"
-        android:padding="2dp"
+        android:padding="8dp"
         android:text="Ver todas las universidades  y sus informaciones"
         android:textAllCaps="false"
         android:textColor="@color/blanco"
-        android:textSize="16sp"
-        android:textStyle="bold" />
+        android:textSize="16sp" />
 
 
 </LinearLayout>

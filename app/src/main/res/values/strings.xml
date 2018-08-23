@@ -5,7 +5,73 @@
 
     <string name="title_activity_login">Sign in</string>
 
+    <string name="texto_universidad">Bienvenido José Ugarte, en esta área encontrarás todas las carreras profesionales existentes en Bolivia, donde te mostraremos cada una, su descripción clara de conjuntos de capacidades y competencias que requieren  la formación  de una persona, para encarar responsablemente las funciones y tareas de las profesiones ó trabajos.
+También encontrarás términos y/ó conceptos básicos muy importantes que te ayudarán al inicio de tu formación profesional.
+</string>
 
+    <string name="text_orientacion">Una vez ya elegida la carrera profesional que estudiaremos, nos topamos con términos básicos el primer dia de inscripcion, primer dia de clases o simplemente mucho mas antes de elegir la profesion, que muy pocas personas conocen, como ¿qué es una matrícula?, un semestre, una carrera anual y sus importancias, al igual la diferencia de una profesión a nivel licienciatura , técnico medio, superior y entre otros.
+En esta pestaña te guiaremos paso a paso los detalles e importancias de cada una de ellos.
+
+La  Matrícula
+
+ El proceso de matrícula es el conjunto de políticas, procedimientos y actividades, que permiten organizar la continuidad de los alumnos antiguos y el ingreso de alumnos nuevos.
+
+El precio por matricularse a una institución varían de acuerdo a  las políticas de cada universidad o institutos
+
+El pago de la matrícula es por única vez, hasta la conclusión de la carrera profesional elegida. En algunas instituciones el pago es fraccionado, es decir en 2 u 3 pagos, de acuerdo a las políticas de cada institución.
+
+
+Carreras semestrales
+
+Un Semestre dentro la las instituciones educativas, es conocido como el período de tiempo que tiene las materias o cursos dictados. Dentro las universidades, es conocidos en dos periodos anuales y semestrales.
+
+Las  semestrales tienen un período entre 16 y 20 semanas; llevando así 2 semestres  en 1 año.
+
+Dentro del semestre se pueden llevar un máximo de 7 materias.
+
+
+Carreras Anuales
+
+Son aquellas carreras que que concluyen su período dentro 1 año de estudio.
+
+En las carreras anuales se llevan un máximo 3 materias por cada mes.
+
+En algunas universidades una misma carrera profesional pueden estar semestral y en otra universidad anual.
+Es muy importante elegir antes de estudiar una carrera profesional dependiendo a la área profesional que té formaras este dos períodos Semestral y Anual°
+
+
+Carreras Semipresenciales
+
+Esta modalidad empleadas en algunas universidades, consiste en asistir a clases al menos una vez por semana, ya sea en el horario de la noche o los fines de semana, es decir sábado o domingo.
+El alumno  puede tomar hasta seis materias y avanzarlas en su casa mediante una plataforma virtual, (online). Lo que se hace en cada clase es reforzar el material que el universitario tiene en la plataforma.
+
+Para todas las materias es necesario que el estudiante esté presente para rendir los exámenes.
+Esta Modalidad ayuda mucho a las personas que trabajan y/ó tienen otras ocupaciones.
+
+
+Carreras Virtuales
+
+También conocidos como ºCarreras a Distanciasº, Son aquellas profesiones que se pueden estudiar desde cualquier lugar, sin la necesidad de asistir a clases en las aulas, sino directamente se inscribirán y desde sus casas o desde sus comunidades, donde tengan acceso a internet.
+
+
+¿Qué es una carrera profesional a Nivel Licenciatura?
+
+Una carrera a nivel Licenciatura es la condición que alcanza alguien que consigue una licencia. El término se utiliza, por lo tanto, para describir a la persona que completó una licenciatura, un título de carácter universitario al que se accede después de cursar una carrera de entre cuatro y seis años de duración. Las carreras de nivel Licenciatura lo encontramos en las universidades.
+Ejemplo: Medicina, Ing. Petrolera, Arquitectura, etc.
+
+
+¿Qué es una carrera profesional a nivel Técnico Superior?
+
+La Educación Técnica está orientada a entregar a los estudiantes la capacidad y los conocimientos necesarios para desempeñarse en una especialidad de apoyo al nivel profesional, o bien desempeñarse por cuenta propia.
+
+Las carreras Técnicas de Nivel Superior se pueden impartir en universidades, Institutos Profesiones (IP) y Centros de Formación Técnica (CFT).
+
+• Para obtener el título de técnico de nivel superior es necesario aprobar un programa de estudios de una duración mínima de 1.600 horas de clases (4 semestres).
+• La mayoría de las carreras técnicas duran entre 4 semestres (2 años) y 6 semestres (3 años).
+
+Ejemplo: Electrónica, Ing. en Metalúrgica, Mecánica General, etc.
+
+</string>
     <string name="title_activity_home">KIBA</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
@@ -38,4 +104,8 @@
         completions.</string>
     <string name="universidades">Universidades</string>
     <string name="title_activity_mapa_ubicacion">Map</string>
+    <string name="title_activity_menu">MenuActivity</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

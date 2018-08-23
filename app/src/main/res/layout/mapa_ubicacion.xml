@@ -25,7 +25,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
         android:layout_weight="7"
-    tools:context=".Mapa_ubicacion" />
+    tools:context=".Activitys.Mapa_ubicacion" />
     <Button
         android:id="@+id/btnInicio"
         android:layout_width="120dp"
