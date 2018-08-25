@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
         android:layout_weight="0"
-        android:text="Orientación Universitaria"
+        android:text="ORIENTACION UNIVERSITARIA"
         android:textAlignment="center"
         android:textColor="@color/primary_dark"
         android:textSize="20sp"

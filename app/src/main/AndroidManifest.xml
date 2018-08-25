@@ -41,8 +41,13 @@
             android:label="@string/title_activity_menu"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".Activitys.Universidades.UniversidadesActivity" />
-        <activity android:name=".Activitys.OrientacionUniversitaria.AreasActivity" />
-        <activity android:name=".Activitys.OrientacionUniversitaria.PerfilProfesionalActivity"></activity>
+        <activity
+            android:name=".Activitys.OrientacionUniversitaria.AreasActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".Activitys.OrientacionUniversitaria.PerfilProfesionalActivity" />
+        <activity android:name=".Activitys.OrientacionUniversitaria.ListaCarreraActivity" />
+        <activity android:name=".Activitys.OrientacionUniversitaria.DetalleCarreraActivity" />
+        <activity android:name=".Activitys.Universidades.ListaUniversidadActivity"></activity>
     </application>
 
 </manifest>
