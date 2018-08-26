@@ -8,7 +8,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-
 import com.biessap.biessap.R;
 
 public class UniversidadesActivity extends AppCompatActivity {
@@ -32,7 +31,6 @@ public class UniversidadesActivity extends AppCompatActivity {
         Button btn = (Button) findViewById(R.id.btnVer);
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
-            //Ir a inicio
             public void onClick(View v) {
                 Intent intent = new Intent(UniversidadesActivity.this, ListaUniversidadActivity.class);
                 startActivity(intent);

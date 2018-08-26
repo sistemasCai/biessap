@@ -32,9 +32,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".Activitys.HomeActivity"
-            android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".Activitys.OrientacionUniversitaria.ActivityOrientacion" />
         <activity
             android:name=".Activitys.MenuActivity"
@@ -47,7 +44,15 @@
         <activity android:name=".Activitys.OrientacionUniversitaria.PerfilProfesionalActivity" />
         <activity android:name=".Activitys.OrientacionUniversitaria.ListaCarreraActivity" />
         <activity android:name=".Activitys.OrientacionUniversitaria.DetalleCarreraActivity" />
-        <activity android:name=".Activitys.Universidades.ListaUniversidadActivity"></activity>
+        <activity android:name=".Activitys.Universidades.ListaUniversidadActivity" />
+        <activity android:name=".Activitys.Universidades.DetalleUniversidadActivity" />
+        <activity android:name=".Activitys.Universidades.ListaCarrera2Activity" />
+        <activity android:name=".Activitys.Universidades.DetalleCarreraActivity" />
+        <activity android:name=".Activitys.Universidades.CalendarioActivity" />
+        <activity android:name=".Activitys.SelectCiudadActivity" />
+        <activity android:name=".Activitys.Universidades.TransporteActivity" />
+        <activity android:name=".Activitys.Institutos.CalendarioInstitutoActivity" />
+        <activity android:name=".Activitys.Institutos.DetalleInstitutoActivity"></activity>
     </application>
 
 </manifest>

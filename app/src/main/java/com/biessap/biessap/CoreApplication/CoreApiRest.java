@@ -1,8 +1,11 @@
-package com.biessap.biessap.system;
+package com.biessap.biessap.CoreApplication;
 
 import android.content.Context;
 import android.os.AsyncTask;
 import android.util.Log;
+
+import com.biessap.biessap.system.Configuracion;
+
 import org.json.JSONObject;
 import cn.pedant.SweetAlert.SweetAlertDialog;
 
@@ -35,22 +38,14 @@ public abstract class CoreApiRest {
             try {
                 if(getTipoJSON() == JSON_OBJECT){
                     JSONObject json = new JSONObject(s);
-                    if(!jsonObjectEmpty(s)){
                         onSuccess(s);
-                    }else{
-                        onEmpty(s);
-                    }
                 }
                 else{
-                    if(!jsonArrayEmpty(s)){
                         onSuccess(s);
-                    }else{
-                        onEmpty(s);
-                    }
                 }
             }catch (Exception e){
                 Log.e("CoreApiRest",e.getMessage());
-                    onError();
+                    onError(s);
             }
         }
     }
@@ -84,40 +79,22 @@ public abstract class CoreApiRest {
             try {
                 if(getTipoJSON() == JSON_OBJECT){
                     JSONObject json = new JSONObject(s);
-                    if(!jsonObjectEmpty(s)){
                         onSuccess(s);
-                    }else{
-                        onEmpty(s);
-                    }
                 }
                 else{
-                    if(!jsonArrayEmpty(s)){
-                        onSuccess(s);
-                    }else{
-                        onEmpty(s);
-                    }
+                    onSuccess(s);
                 }
             }catch (Exception e){
                 Log.e("CoreApiRest",e.getMessage());
-                onError();
+                onError(s);
             }
             pDialog.dismissWithAnimation();
         }
     }
 
-    protected abstract void onError();
-
-    protected abstract void onEmpty(String s);
+    protected abstract void onError(String code);
 
     protected abstract void onSuccess(String s);
-
-    private boolean jsonObjectEmpty(String s) {
-      return s.equalsIgnoreCase("{}");
-    }
-
-    private boolean jsonArrayEmpty(String s){
-        return s.equalsIgnoreCase("[]");
-    }
 
     protected abstract int getTipoJSON();
 

@@ -9,12 +9,15 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.biessap.biessap.R;
+import com.biessap.biessap.system.Session;
 import com.google.android.gms.auth.api.Auth;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.auth.api.signin.GoogleSignInResult;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.common.api.GoogleApiClient;
+
+import org.json.JSONObject;
 
 public class LoginActivity extends AppCompatActivity implements GoogleApiClient.OnConnectionFailedListener{
 
@@ -53,6 +56,17 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
         btnFacebook.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                JSONObject jsonObject = new JSONObject();
+                try {
+                    jsonObject.put("id",33);
+                    jsonObject.put("name","null");
+                    jsonObject.put("email","cristian@hotmail.com");
+                    jsonObject.put("avatar","users/default.png");
+                    jsonObject.put("es_premium","no");
+                    jsonObject.put("dio_psa","no");
+                    Session session = new Session(LoginActivity.this);
+                    session.setDataSession(jsonObject);
+                }catch (Exception e){}
                 goMainScreen();
             }
         });
@@ -80,8 +94,9 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
     }
 
     private void goMainScreen() {
-        Intent intent  = new Intent(this,MenuActivity.class);
+        Intent intent  = new Intent(this,SelectCiudadActivity.class);
         getIntent().addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(intent);
+        finish();
     }
 }

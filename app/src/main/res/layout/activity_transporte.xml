@@ -2,6 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/plomo"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <LinearLayout
@@ -10,23 +11,27 @@
         android:gravity="center"
         android:layout_above="@+id/button_container"
         android:orientation="vertical">
-        <EditText
-            android:layout_marginTop="30dp"
-            android:id="@+id/buscar"
-            android:layout_width="250dp"
-            android:layout_height="40dp"
-            android:padding="10dp"
-            android:layout_alignParentStart="true"
-            android:background="@color/plomo"
-            android:drawableLeft="@drawable/buscar"
-            android:ems="15"
-            android:hint="Buscar"
-            android:inputType="textPersonName"
-            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="Trasporte publico"
+            android:textColor="@color/primary_dark"
+            android:textSize="24sp"
+            android:textStyle="bold"/>
+        <TextView
+            android:paddingTop="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="10dp"
+            android:text="Lineas de micros y trufis que pasan cerca de la universidad"
+            android:textStyle="bold"/>
 
         <android.support.v7.widget.RecyclerView
             android:layout_marginTop="10dp"
             android:id="@+id/recyclerView"
+           android:background="@color/blanco"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
@@ -38,7 +43,10 @@
         android:layout_alignParentBottom="true"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:gravity="center"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
+        android:orientation="horizontal">
 
         <android.support.v7.widget.CardView
             android:id="@+id/btn_inicio"

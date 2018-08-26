@@ -21,17 +21,21 @@ import java.net.URL;
 public class Api {
 
     public static final String NET_ERROR = "Error al conectar con servidor";
+
     public static String get(String ruta){
+        int responseCode = 408;
         StringBuilder json = new StringBuilder();
         try {
             URL url = new URL(ruta);
             HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
-            httpURLConnection.setReadTimeout(10000);
-            httpURLConnection.setConnectTimeout(10000);
+            httpURLConnection.setReadTimeout(7000);
+            httpURLConnection.setConnectTimeout(4000);
             httpURLConnection.setRequestMethod("GET");
             httpURLConnection.setRequestProperty("Content-Type", "application/json");
             httpURLConnection.connect();
 
+
+            responseCode = httpURLConnection.getResponseCode();
             InputStream input = httpURLConnection.getInputStream();
             BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(input));
 
@@ -40,13 +44,14 @@ public class Api {
                 json.append(linea);
             }
         } catch (Exception e) {
-            return "error de url"+e.getMessage();
+            return ""+responseCode;
         }
         return json.toString();
     }
 
     public static String post(String Ruta, JSONObject json){
         StringBuilder res = new StringBuilder("");
+        int responseCode = 408;
         // conectar con el servidor
         try {
             URL url = new URL(Ruta);
@@ -58,6 +63,7 @@ public class Api {
             urlConnection.connect();
 
             // envio a al servidor
+            responseCode = urlConnection.getResponseCode();
             OutputStream out= urlConnection.getOutputStream();
             BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(out));
             bufferedWriter.write(json.toString());
@@ -78,8 +84,7 @@ public class Api {
             bufferedReader.close();
             bufferedWriter.close();
         }catch (Exception e){
-            return e.getMessage();
-//            return "Error al conectar con servidor";
+            return ""+responseCode;
         }
 
         return res.toString();

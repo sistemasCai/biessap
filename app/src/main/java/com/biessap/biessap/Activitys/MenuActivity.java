@@ -1,8 +1,10 @@
 package com.biessap.biessap.Activitys;
 
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.widget.CardView;
+import android.util.Log;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -14,6 +16,9 @@ import android.view.Menu;
 import com.biessap.biessap.Activitys.OrientacionUniversitaria.PerfilProfesionalActivity;
 import com.biessap.biessap.Activitys.Universidades.UniversidadesActivity;
 import com.biessap.biessap.R;
+import com.biessap.biessap.system.Api;
+import com.biessap.biessap.system.Session;
+
 import android.view.MenuItem;
 
 public class MenuActivity extends AppCompatActivity
@@ -26,6 +31,10 @@ public class MenuActivity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        new prueba().execute();
+
+
+        Log.i("datosSession",Session.getDataSession(this).toString());
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -63,6 +72,15 @@ public class MenuActivity extends AppCompatActivity
         });
     }
 
+
+    class prueba extends AsyncTask<String,String,String>{
+
+        @Override
+        protected String doInBackground(String... strings) {
+            String s = Api.get("http://192.168.1.3/RRHHBrinks/public/listarempleadosreporte");
+            return s;
+        }
+    }
     @Override
     public void onBackPressed() {
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -87,9 +105,11 @@ public class MenuActivity extends AppCompatActivity
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
+        if (id == R.id.sesion) {
+            Session.clear(this);
+            Intent i = new Intent(this,LoginActivity.class);
+            startActivity(i);
+            finish();
         }
 
         return super.onOptionsItemSelected(item);
@@ -101,9 +121,6 @@ public class MenuActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.informacion) {
-
-        }
 
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

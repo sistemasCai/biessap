@@ -14,38 +14,35 @@ import android.view.View;
 import android.widget.EditText;
 
 import com.biessap.biessap.Activitys.MenuActivity;
+import com.biessap.biessap.Activitys.OrientacionUniversitaria.DetalleCarreraActivity;
+import com.biessap.biessap.Activitys.OrientacionUniversitaria.ListaCarreraActivity;
 import com.biessap.biessap.Adapters.AreaAdapter;
+import com.biessap.biessap.Adapters.CarreraAdapter;
 import com.biessap.biessap.R;
 
 import java.util.ArrayList;
 
-public class ListaUniversidadActivity extends AppCompatActivity {
+public class ListaCarrera2Activity extends AppCompatActivity {
 
     RecyclerView recyclerView;
-    AreaAdapter adapter;
+    CarreraAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_lista_universidad);
+        setContentView(R.layout.activity_lista_carrera2);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         setTitle("Atras");
 
         ArrayList<String> data = new ArrayList<>();
-        data.add("Universidad Domingo Savio");
-        data.add("Universidad Autonoma Gabriel Rene Moreno");
-        data.add("Universidad San Pablo");
-        data.add("Universidad Privada de Santa Cruz");
-        data.add("Universidad Tecnologico de Santa Cruz");
-        data.add("Universidad Autonoma Gabriel Rene Moreno");
-        data.add("Universidad San Pablo");
-        data.add("Universidad Privada de Santa Cruz");
-        data.add("Universidad Tecnologico de Santa Cruz");
-
-        adapter = new AreaAdapter(data) {
+        data.add("Ing. Informatica");
+        data.add("Ing. Informatica");
+        data.add("Ing. Informatica");
+        data.add("Ing. Informatica");
+        adapter = new CarreraAdapter(data) {
             @Override
             public void OnItemClick(int pos) {
-                Intent i = new Intent(ListaUniversidadActivity.this,DetalleUniversidadActivity.class);
+                Intent i = new Intent(ListaCarrera2Activity.this,DetalleCarreraActivity.class);
                 startActivity(i);
             }
         };
@@ -69,17 +66,6 @@ public class ListaUniversidadActivity extends AppCompatActivity {
             @Override
             public void afterTextChanged(Editable s) {
 
-            }
-        });
-
-        CardView btn_inicio = findViewById(R.id.btn_inicio);
-        btn_inicio.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(ListaUniversidadActivity.this, MenuActivity.class);
-                i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
-                startActivity(i);
-                finish();
             }
         });
 
