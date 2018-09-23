@@ -16,14 +16,21 @@ import android.widget.Toast;
 
 import com.biessap.biessap.Activitys.MenuActivity;
 import com.biessap.biessap.Adapters.AreaAdapter;
+import com.biessap.biessap.Adapters.CarreraAdapter;
 import com.biessap.biessap.R;
+import com.biessap.biessap.Rest.RestGetCarrerasA;
+import com.biessap.biessap.models.Area;
+import com.biessap.biessap.models.Carrera;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 
 public class ListaCarreraActivity extends AppCompatActivity {
 
     RecyclerView recyclerView;
-    AreaAdapter adapter;
+    CarreraAdapter adapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,23 +39,8 @@ public class ListaCarreraActivity extends AppCompatActivity {
 
         String titulo = getIntent().getStringExtra("nombre");
         getSupportActionBar().setTitle(titulo);
+        obtenerCarreras();
 
-        ArrayList<String> data = new ArrayList<>();
-        data.add("Ing. Informatica");
-        data.add("Ing. Informatica");
-        data.add("Ing. Informatica");
-        data.add("Ing. Informatica");
-        adapter = new AreaAdapter(data) {
-            @Override
-            public void OnItemClick(int pos) {
-                Intent i = new Intent(ListaCarreraActivity.this,DetalleCarreraActivity.class);
-                startActivity(i);
-            }
-        };
-        recyclerView = (RecyclerView)findViewById(R.id.recyclerView);
-        LinearLayoutManager mLayoutManager = new LinearLayoutManager(this);
-        recyclerView.setLayoutManager(mLayoutManager);
-        recyclerView.setAdapter(adapter);
 
         EditText edit_buscar = findViewById(R.id.buscar);
         edit_buscar.addTextChangedListener(new TextWatcher() {
@@ -80,6 +72,44 @@ public class ListaCarreraActivity extends AppCompatActivity {
         });
     }
 
+    private void obtenerCarreras(){
+        int id = getIntent().getIntExtra("id",-1);
+        new RestGetCarrerasA(id) {
+            @Override
+            protected void onError(String code) {
+                if(code.contains("404"))
+                Toast.makeText(getApplicationContext(),"Sin Datos Disponibles",Toast.LENGTH_SHORT).show();
+                else{
+                    Toast.makeText(getApplicationContext(),code,Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            protected void onSuccess(String s) {
+                ArrayList<Carrera> lista = new ArrayList<>();
+                try{
+                    JSONObject jsonObject = new JSONObject(s);
+                    JSONArray datos = jsonObject.getJSONArray("datos");
+                    for (int i = 0; i < datos.length(); i++) {
+                        lista.add(Carrera.parser(datos.getJSONObject(i)));
+                    }
+
+                }catch (Exception e){}
+
+                adapter = new CarreraAdapter(lista) {
+                    @Override
+                    public void OnItemClick(int pos) {
+                        Intent i = new Intent(ListaCarreraActivity.this,DetalleCarreraActivity.class);
+                        startActivity(i);
+                    }
+                };
+                recyclerView = (RecyclerView)findViewById(R.id.recyclerView);
+                LinearLayoutManager mLayoutManager = new LinearLayoutManager(ListaCarreraActivity.this);
+                recyclerView.setLayoutManager(mLayoutManager);
+                recyclerView.setAdapter(adapter);
+            }
+        }.runDialog(this);
+    }
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {

@@ -6,6 +6,7 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.CardView;
+import android.text.Html;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.LinearLayout;
@@ -15,6 +16,8 @@ import com.biessap.biessap.CoreApplication.CoreFragment;
 import com.biessap.biessap.Fragments.CalendarioFragments.InscripcionFragment;
 import com.biessap.biessap.Fragments.CalendarioFragments.RequisitoFragment;
 import com.biessap.biessap.R;
+import com.biessap.biessap.models.Universidad;
+
 public class CalendarioActivity extends AppCompatActivity implements CoreFragment.OnFragmentInteractionListener {
 
     @Override
@@ -22,21 +25,27 @@ public class CalendarioActivity extends AppCompatActivity implements CoreFragmen
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calendario);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        setTitle("Atras");
 
+
+        Bundle bundle = getIntent().getBundleExtra("universidad");
+        final Universidad uni = (Universidad) bundle.getSerializable("universidad");
+        setTitle(uni.getNombre());
         final LinearLayout btn_inscripciones = findViewById(R.id.btn_inscripcion);
         final LinearLayout btn_requisito = findViewById(R.id.btn_requisito);
 
         final TextView text_inscripcion = findViewById(R.id.text_inicripcion);
         final TextView text_requisito = findViewById(R.id.text_requisito);
-
+        TextView text_gestion = findViewById(R.id.gestion);
+        text_gestion.setText(uni.getGestion());
 
         btn_inscripciones.setBackgroundColor(Color.parseColor("#9dbcde"));
         text_inscripcion.setTextColor(Color.WHITE);
         text_requisito.setTextColor(Color.parseColor("#9dbcde"));
         btn_requisito.setBackgroundColor(Color.WHITE);
+        InscripcionFragment inscripcionFragment = new InscripcionFragment();
+        inscripcionFragment.setArguments(bundle);
         FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-        fragmentTransaction.replace(R.id.fragment_content, new InscripcionFragment());
+        fragmentTransaction.replace(R.id.fragment_content, inscripcionFragment);
         fragmentTransaction.commit();
 
         btn_inscripciones.setOnClickListener(new View.OnClickListener() {
@@ -47,8 +56,10 @@ public class CalendarioActivity extends AppCompatActivity implements CoreFragmen
                 text_inscripcion.setTextColor(Color.WHITE);
                 text_requisito.setTextColor(Color.parseColor("#9dbcde"));
                 btn_requisito.setBackgroundColor(Color.WHITE);
+                InscripcionFragment inscripcionFragment = new InscripcionFragment();
+                inscripcionFragment.setArguments(bundle);
                 FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-                fragmentTransaction.replace(R.id.fragment_content, new InscripcionFragment());
+                fragmentTransaction.replace(R.id.fragment_content, inscripcionFragment);
                 fragmentTransaction.commit();
             }
         });
@@ -60,8 +71,10 @@ public class CalendarioActivity extends AppCompatActivity implements CoreFragmen
                 text_requisito.setTextColor(Color.WHITE);
                 text_inscripcion.setTextColor(Color.parseColor("#9dbcde"));
                 btn_inscripciones.setBackgroundColor(Color.WHITE);
+                RequisitoFragment requisitoFragment = new RequisitoFragment();
+                requisitoFragment.setArguments(bundle);
                 FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-                fragmentTransaction.replace(R.id.fragment_content, new RequisitoFragment());
+                fragmentTransaction.replace(R.id.fragment_content, requisitoFragment);
                 fragmentTransaction.commit();
             }
         });

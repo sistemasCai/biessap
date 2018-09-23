@@ -4,35 +4,22 @@
     tools:showIn="navigation_view">
 
     <group android:checkableBehavior="single">
-        <item
-            android:id="@+id/nav_codigo"
-            android:icon="@drawable/ic_format_align_justify_black"
-            android:title="Introducir Código" />
+
         <item
             android:id="@+id/nav_activar"
             android:icon="@drawable/ic_vpn_key_black"
             android:title="Activar Paquete" />
         <item
-            android:id="@+id/nav_pasar"
-            android:icon="@drawable/ic_swap_horiz_black"
-            android:title="Pasar Saldo" />
-        <item
-            android:id="@+id/nav_ver"
-            android:icon="@drawable/ic_attach_money_black"
-            android:title="Ver Saldo" />
-        <item
             android:id="@+id/nav_caducidad"
             android:icon="@drawable/ic_access_time_black"
             android:title="Ver caducidad" />
         <item
-            android:id="@+id/nav_billetera"
-            android:icon="@drawable/ic_account_balance_wallet_black"
-            android:title="Billetera" />
-        <item
             android:id="@+id/nav_ayuda"
             android:icon="@drawable/ic_help_outline_black"
             android:title="Ayuda" />
+        <item
+            android:id="@+id/nav_mapa"
+            android:icon="@drawable/ic_help_outline_black"
+            android:title="Puntos de Compra" />
     </group>
-
-
 </menu>

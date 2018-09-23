@@ -12,17 +12,25 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.biessap.biessap.Activitys.MenuActivity;
 import com.biessap.biessap.Adapters.AreaAdapter;
+import com.biessap.biessap.Adapters.UniversidadAdapter;
 import com.biessap.biessap.R;
+import com.biessap.biessap.Rest.RestGetInstituciones;
+import com.biessap.biessap.models.Area;
+import com.biessap.biessap.models.Universidad;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 
 public class ListaUniversidadActivity extends AppCompatActivity {
 
     RecyclerView recyclerView;
-    AreaAdapter adapter;
+    UniversidadAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,32 +38,10 @@ public class ListaUniversidadActivity extends AppCompatActivity {
         setContentView(R.layout.activity_lista_universidad);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         setTitle("Atras");
-
-        ArrayList<String> data = new ArrayList<>();
-        data.add("Universidad Domingo Savio");
-        data.add("Universidad Autonoma Gabriel Rene Moreno");
-        data.add("Universidad San Pablo");
-        data.add("Universidad Privada de Santa Cruz");
-        data.add("Universidad Tecnologico de Santa Cruz");
-        data.add("Universidad Autonoma Gabriel Rene Moreno");
-        data.add("Universidad San Pablo");
-        data.add("Universidad Privada de Santa Cruz");
-        data.add("Universidad Tecnologico de Santa Cruz");
-
-        adapter = new AreaAdapter(data) {
-            @Override
-            public void OnItemClick(int pos) {
-                Intent i = new Intent(ListaUniversidadActivity.this,DetalleUniversidadActivity.class);
-                startActivity(i);
-            }
-        };
-        recyclerView = (RecyclerView)findViewById(R.id.recyclerView);
-        LinearLayoutManager mLayoutManager = new LinearLayoutManager(this);
-        recyclerView.setLayoutManager(mLayoutManager);
-        recyclerView.setAdapter(adapter);
-
+        obtenerUniversidades();
         EditText edit_buscar = findViewById(R.id.buscar);
-        edit_buscar.addTextChangedListener(new TextWatcher() {
+
+         edit_buscar.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
@@ -63,7 +49,9 @@ public class ListaUniversidadActivity extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                adapter.getFilter().filter(s);
+                try{
+                    adapter.getFilter().filter(s);
+                }catch (Exception e){}
             }
 
             @Override
@@ -83,6 +71,44 @@ public class ListaUniversidadActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    private void obtenerUniversidades() {
+        String clase = "universidad";
+        new RestGetInstituciones(clase) {
+            @Override
+            protected void onError(String code) {
+                Toast.makeText(getApplicationContext(),""+code,Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            protected void onSuccess(String s) {
+                ArrayList<Universidad> lista = new ArrayList<>();
+                try{
+                    JSONObject jsonObject = new JSONObject(s);
+                    JSONArray datos = jsonObject.getJSONArray("datos");
+                    for (int i = 0; i < datos.length(); i++) {
+                        lista.add(Universidad.parser(datos.getJSONObject(i)));
+                    }
+                }catch (Exception e){}
+                adapter = new UniversidadAdapter(lista) {
+                    @Override
+                    public void OnItemClick(int pos) {
+                        Intent i = new Intent(ListaUniversidadActivity.this,DetalleUniversidadActivity.class);
+                        Universidad uni = adapter.getItem(pos);
+                        Bundle bundle = new Bundle();
+                        bundle.putSerializable("universidad",uni);
+                        i.putExtra("universidad",bundle);
+                        startActivity(i);
+                    }
+                };
+                recyclerView = (RecyclerView)findViewById(R.id.recyclerView);
+                LinearLayoutManager mLayoutManager = new LinearLayoutManager(ListaUniversidadActivity.this);
+                recyclerView.setLayoutManager(mLayoutManager);
+                recyclerView.setAdapter(adapter);
+
+            }
+        }.runDialog(this);
     }
 
     @Override

@@ -51,7 +51,7 @@
             app:layout_constraintTop_toBottomOf="@+id/btnIngresar"></com.google.android.gms.common.SignInButton>
 
         <Button
-            android:id="@+id/btnFacebook"
+            android:id="@+id/button_facebook_login"
             style="@style/Widget.AppCompat.Button.Colored"
             android:layout_width="238dp"
             android:layout_height="38dp"
@@ -62,6 +62,20 @@
             android:background="@color/facebook"
             android:foreground="?android:attr/selectableItemBackground"
             android:text="Acceder con Facebook"
+            android:textSize="12sp" />
+
+        <Button
+            android:id="@+id/btnFacebook"
+            style="@style/Widget.AppCompat.Button.Colored"
+            android:layout_width="238dp"
+            android:layout_height="38dp"
+            android:layout_gravity="center"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="20dp"
+            android:background="@color/azul_claro"
+            android:foreground="?android:attr/selectableItemBackground"
+            android:text="Acceder"
             android:textSize="12sp" />
     </LinearLayout>
 </RelativeLayout>

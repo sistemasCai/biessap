@@ -47,11 +47,11 @@ public class Area {
         }catch (Exception e){}
 
         try{
-            area.setNombre(jsonObject.getString("nivel"));
+            area.setNombre(jsonObject.getString("nombre"));
         }catch (Exception e){}
 
         try{
-            area.setNivel(jsonObject.getString("nombre"));
+            area.setNivel(jsonObject.getString("nivel"));
         }catch (Exception e){}
 
         return area;

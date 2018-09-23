@@ -19,6 +19,11 @@ import com.biessap.biessap.Activitys.OrientacionUniversitaria.ListaCarreraActivi
 import com.biessap.biessap.Adapters.AreaAdapter;
 import com.biessap.biessap.CoreApplication.CoreFragment;
 import com.biessap.biessap.R;
+import com.biessap.biessap.Rest.RestGetAreas;
+import com.biessap.biessap.models.Area;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 
@@ -33,26 +38,7 @@ public class TecnicoSuperiorFragment extends CoreFragment {
 
     @Override
     public void iniciarFragmentoView(View v) {
-        ArrayList<String> data = new ArrayList<>();
-        data.add("CS. JURIDICAS POLITICAS Y SOCIALES");
-        data.add("CS. ECONOMICAS, ADMINISTRATIVAS Y FINACIERAS");
-        data.add("CS. DEL HABITAT");
-        data.add("CS. FARMACEUTICAS Y BIOQUIMICAS");
-        data.add("CS. JURIDICAS POLITICAS Y SOCIALES");
-        data.add("CS. ECONOMICAS, ADMINISTRATIVAS Y FINACIERAS");
-        data.add("CS. DEL HABITAT");
-        data.add("CS. FARMACEUTICAS Y BIOQUIMICAS");
-        adapter = new AreaAdapter(data) {
-            @Override
-            public void OnItemClick(int pos) {
-                Intent i = new Intent(getActivity(), ListaCarreraActivity.class);
-                startActivity(i);
-            }
-        };
-        recyclerView = (RecyclerView)v.findViewById(R.id.recyclerView);
-        LinearLayoutManager mLayoutManager = new LinearLayoutManager(getActivity());
-        recyclerView.setLayoutManager(mLayoutManager);
-        recyclerView.setAdapter(adapter);
+        obtenerAreas(v);
         EditText edit_buscar = v.findViewById(R.id.buscar);
         edit_buscar.addTextChangedListener(new TextWatcher() {
             @Override
@@ -72,6 +58,47 @@ public class TecnicoSuperiorFragment extends CoreFragment {
         });
     }
 
+    private void obtenerAreas(final View v){
+        String nivel = "tecnico_superior";
+        new RestGetAreas(nivel) {
+            @Override
+            protected void onError(String code) {
+                Toast.makeText(getActivity(),code,Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            protected void onSuccess(String s) {
+                ArrayList<Area> data = new ArrayList<>();
+                try{
+                    JSONObject jsonObject = new JSONObject(s);
+                    JSONArray datos = jsonObject.getJSONArray("datos");
+                    for (int i = 0; i < datos.length(); i++) {
+                        data.add(Area.parser(datos.getJSONObject(i)));
+                    }
+                }catch (Exception e){
+                    Toast.makeText(getActivity(),e.getMessage(),Toast.LENGTH_SHORT).show();
+                }
+
+                adapter = new AreaAdapter(data) {
+                    @Override
+                    public void OnItemClick(int pos) {
+
+                        String nombre = adapter.getItem(pos).getNombre();
+                        int id = adapter.getItem(pos).getId();
+                        Intent i = new Intent(getActivity(), ListaCarreraActivity.class);
+                        i.putExtra("id",id);
+                        i.putExtra("nombre",nombre);
+                        startActivity(i);
+
+                    }
+                };
+                recyclerView = (RecyclerView) v.findViewById(R.id.recyclerView);
+                LinearLayoutManager mLayoutManager = new LinearLayoutManager(getActivity());
+                recyclerView.setLayoutManager(mLayoutManager);
+                recyclerView.setAdapter(adapter);
+            }
+        }.runDialog(getActivity());
+    }
     @Override
     public void iniciarFragmento() {
 

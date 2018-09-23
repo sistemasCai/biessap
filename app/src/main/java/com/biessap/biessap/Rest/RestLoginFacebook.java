@@ -8,11 +8,13 @@ import org.json.JSONObject;
 public abstract class RestLoginFacebook extends CoreApiRest {
 
     String email;
+    String name;
     int facebook_id;
 
-    public RestLoginFacebook(String email, int facebook_id) {
+    public RestLoginFacebook(String email, String name,int facebook_id) {
         this.email = email;
         this.facebook_id = facebook_id;
+        this.name = name;
     }
 
     @Override
@@ -31,6 +33,7 @@ public abstract class RestLoginFacebook extends CoreApiRest {
         JSONObject jsonObject = new JSONObject();
         try{
             jsonObject.put("email",email);
+            jsonObject.put("name",name);
             jsonObject.put("facebook_id",facebook_id);
         }catch (Exception e){}
         return Api.post(configuracion.getBaseUrl() + "login-facebook",jsonObject);

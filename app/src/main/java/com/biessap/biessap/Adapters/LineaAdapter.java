@@ -1,5 +1,6 @@
 package com.biessap.biessap.Adapters;
 
+import android.graphics.Color;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -33,6 +34,9 @@ public abstract class LineaAdapter extends RecyclerView.Adapter<LineaAdapter.Lin
     public void onBindViewHolder(@NonNull LineaViewHolder holder, int position) {
         Linea linea = lista.get(position);
         holder.texto.setText(linea.getNombre());
+        try{
+            holder.color_linea.setBackgroundColor(Color.parseColor(linea.getColor()));
+        }catch (Exception e){}
     }
 
     @Override
@@ -49,11 +53,12 @@ public abstract class LineaAdapter extends RecyclerView.Adapter<LineaAdapter.Lin
 
         TextView texto;
         LinearLayout item;
+        View color_linea;
         public LineaViewHolder(View itemView) {
             super(itemView);
             texto = itemView.findViewById(R.id.text);
             item = itemView.findViewById(R.id.container);
-
+            color_linea = itemView.findViewById(R.id.color);
             item.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

@@ -5,6 +5,8 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import com.biessap.biessap.R;
+import com.biessap.biessap.models.Carrera;
+
 import android.view.ViewGroup;
 import android.widget.Filter;
 import android.widget.Filterable;
@@ -16,10 +18,10 @@ import java.util.ArrayList;
 
 public abstract class CarreraAdapter extends RecyclerView.Adapter<CarreraAdapter.CarreraViewHolder> implements Filterable {
 
-    ArrayList<String> lista;
-    ArrayList<String>  listaFilter;
+    ArrayList<Carrera> lista;
+    ArrayList<Carrera>  listaFilter;
 
-    public CarreraAdapter(ArrayList<String> lista) {
+    public CarreraAdapter(ArrayList<Carrera> lista) {
         this.lista = lista;
         listaFilter = new ArrayList<>();
         listaFilter.addAll(lista);
@@ -33,14 +35,14 @@ public abstract class CarreraAdapter extends RecyclerView.Adapter<CarreraAdapter
         return CarreraViewHolder;
     }
 
-    public String getItem(int i){
+    public Carrera getItem(int i){
         return listaFilter.get(i);
     }
 
     @Override
     public void onBindViewHolder(@NonNull CarreraViewHolder holder, int position) {
-        String Carrera = listaFilter.get(position);
-        holder.titulo.setText(Carrera);
+        Carrera carrera = listaFilter.get(position);
+        holder.titulo.setText(carrera.getNombre());
     }
 
     @Override
@@ -54,7 +56,7 @@ public abstract class CarreraAdapter extends RecyclerView.Adapter<CarreraAdapter
                     listaFilter.addAll(lista);
                 }else{
                     for (int i = 0; i < lista.size(); i++) {
-                        if(lista.get(i).toLowerCase().contains(texto.toLowerCase())){
+                        if(lista.get(i).getNombre().toLowerCase().contains(texto.toLowerCase())){
                             listaFilter.add(lista.get(i));
                         }
                     }

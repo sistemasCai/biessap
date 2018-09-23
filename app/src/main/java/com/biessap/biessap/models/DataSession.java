@@ -8,14 +8,24 @@ public class DataSession {
     String avatar;
     String es_premium;
     String dio_psa;
+    String celular;
 
-    public DataSession(int id, String name, String email, String avatar, String es_premium, String dio_psa) {
+    public DataSession(int id, String name, String email, String avatar, String es_premium, String dio_psa, String celular) {
         this.id = id;
         this.name = name;
         this.email = email;
         this.avatar = avatar;
         this.es_premium = es_premium;
         this.dio_psa = dio_psa;
+        this.celular = celular;
+    }
+
+    public String getCelular() {
+        return celular;
+    }
+
+    public void setCelular(String celular) {
+        this.celular = celular;
     }
 
     public int getId() {

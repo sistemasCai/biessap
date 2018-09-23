@@ -5,6 +5,8 @@ package com.biessap.biessap.Adapters;
         import android.view.LayoutInflater;
         import android.view.View;
         import com.biessap.biessap.R;
+        import com.biessap.biessap.models.Universidad;
+
         import android.view.ViewGroup;
         import android.widget.Filter;
         import android.widget.Filterable;
@@ -14,10 +16,10 @@ package com.biessap.biessap.Adapters;
 
 public abstract class UniversidadAdapter extends RecyclerView.Adapter<UniversidadAdapter.UniversidadViewHolder> implements Filterable {
 
-    ArrayList<String> lista;
-    ArrayList<String>  listaFilter;
+    ArrayList<Universidad> lista;
+    ArrayList<Universidad>  listaFilter;
 
-    public UniversidadAdapter(ArrayList<String> lista) {
+    public UniversidadAdapter(ArrayList<Universidad> lista) {
         this.lista = lista;
         listaFilter = new ArrayList<>();
         listaFilter.addAll(lista);
@@ -31,14 +33,14 @@ public abstract class UniversidadAdapter extends RecyclerView.Adapter<Universida
         return UniversidadViewHolder;
     }
 
-    public String getItem(int i){
+    public Universidad getItem(int i){
         return listaFilter.get(i);
     }
 
     @Override
     public void onBindViewHolder(@NonNull UniversidadViewHolder holder, int position) {
-        String Universidad = listaFilter.get(position);
-        holder.titulo.setText(Universidad);
+        Universidad Universidad = listaFilter.get(position);
+        holder.titulo.setText(Universidad.getNombre());
     }
 
     @Override
@@ -52,7 +54,7 @@ public abstract class UniversidadAdapter extends RecyclerView.Adapter<Universida
                     listaFilter.addAll(lista);
                 }else{
                     for (int i = 0; i < lista.size(); i++) {
-                        if(lista.get(i).toLowerCase().contains(texto.toLowerCase())){
+                        if(lista.get(i).getNombre().toLowerCase().contains(texto.toLowerCase())){
                             listaFilter.add(lista.get(i));
                         }
                     }

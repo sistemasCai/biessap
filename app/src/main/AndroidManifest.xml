@@ -20,6 +20,26 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:replace="android:icon,android:theme">
+        <meta-data
+            android:name="com.facebook.sdk.ApplicationId"
+            android:value="@string/facebook_app_id" />
+
+        <activity
+            android:name="com.facebook.FacebookActivity"
+            android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
+            android:label="@string/app_name" />
+        <activity
+            android:name="com.facebook.CustomTabActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data android:scheme="@string/fb_login_protocol_scheme" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".Activitys.LoginActivity"
             android:theme="@style/AppTheme.NoActionBar" />
@@ -52,7 +72,28 @@
         <activity android:name=".Activitys.SelectCiudadActivity" />
         <activity android:name=".Activitys.Universidades.TransporteActivity" />
         <activity android:name=".Activitys.Institutos.CalendarioInstitutoActivity" />
-        <activity android:name=".Activitys.Institutos.DetalleInstitutoActivity"></activity>
+        <activity android:name=".Activitys.Institutos.DetalleInstitutoActivity" />
+        <activity android:name=".Activitys.Institutos.ListaCarreraInstitutoActivity" />
+        <activity android:name=".Activitys.Institutos.ListaInstitutoActivity" />
+        <activity android:name=".Activitys.Institutos.InstitutoActivity" />
+        <activity android:name=".Activitys.Psa.PsaAreaActivity" />
+        <activity android:name=".Activitys.Psa.PreguntasActivity" />
+        <activity android:name=".Activitys.CaducidadActivity" />
+        <activity android:name=".Activitys.AyudaActivity" />
+        <activity android:name=".Activitys.Universidades.TelefonoActivity" />
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="@string/google_maps_key" />
+
+        <activity
+            android:name=".Activitys.MapsActivity"
+            android:label="@string/title_activity_maps" />
+        <activity android:name=".Activitys.PaisActivity" />
+        <activity android:name=".Activitys.Universidades.MapeoActivity" />
+        <activity android:name=".Activitys.Universidades.UbicacionActivity" />
+        <activity android:name=".Activitys.Universidades.TodasLasCarrerasActivity" />
+        <activity android:name=".Activitys.Psa.PsaPrincipalActivity"></activity>
     </application>
 
 </manifest>

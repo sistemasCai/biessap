@@ -2,7 +2,8 @@
     <string name="app_name">BIESSAP</string>
     <string name="version">0.0.1</string>
     <string name="desarrollo">Desarrollado por JOSE UGARTE</string>
-
+    <string name="facebook_app_id">294244427831016</string>
+    <string name="fb_login_protocol_scheme">fb294244427831016</string>
     <string name="title_activity_login">Sign in</string>
 
     <string name="texto_universidad">Bienvenido José Ugarte, en esta área encontrarás todas las carreras profesionales existentes en Bolivia, donde te mostraremos cada una, su descripción clara de conjuntos de capacidades y competencias que requieren  la formación  de una persona, para encarar responsablemente las funciones y tareas de las profesiones ó trabajos.
@@ -108,4 +109,8 @@ Ejemplo: Electrónica, Ing. en Metalúrgica, Mecánica General, etc.
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="aviso">Sr(a). postulante ud. tiene 1 hora (60 minutos) para resolver su. presione en el boton "finalizar examen"
+    si y solo si esta completamente seguro de haber terminado</string>
+    <string name="texto_pregunta">¿Cual Fue el Primer presidente de Bolivia?</string>
+    <string name="title_activity_maps">Map</string>
 </resources>

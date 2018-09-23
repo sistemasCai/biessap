@@ -24,6 +24,6 @@ public abstract class RestGetInstituciones extends CoreApiRest {
 
     @Override
     protected String runService() {
-        return Api.get(configuracion.getBaseUrl() + "get-instituciones/" + clase);
+        return Api.get(configuracion.getBaseUrl() + "get-instituciones/1/" + clase);
     }
 }

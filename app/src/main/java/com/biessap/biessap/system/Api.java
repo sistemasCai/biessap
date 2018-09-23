@@ -63,7 +63,6 @@ public class Api {
             urlConnection.connect();
 
             // envio a al servidor
-            responseCode = urlConnection.getResponseCode();
             OutputStream out= urlConnection.getOutputStream();
             BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(out));
             bufferedWriter.write(json.toString());
@@ -73,7 +72,7 @@ public class Api {
 
             InputStream in = urlConnection.getInputStream();
             BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(in));
-
+            responseCode = urlConnection.getResponseCode();
 
             String linea = "";
 
@@ -84,6 +83,7 @@ public class Api {
             bufferedReader.close();
             bufferedWriter.close();
         }catch (Exception e){
+            String data = e.getMessage();
             return ""+responseCode;
         }
 

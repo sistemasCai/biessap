@@ -12,7 +12,11 @@ import com.biessap.biessap.Activitys.OrientacionUniversitaria.ListaCarreraActivi
 import com.biessap.biessap.Adapters.AreaAdapter;
 import com.biessap.biessap.Adapters.LineaAdapter;
 import com.biessap.biessap.R;
+import com.biessap.biessap.Rest.RestGetLineas;
 import com.biessap.biessap.models.Linea;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 
@@ -25,33 +29,45 @@ public class TransporteActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_transporte);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
-
-        ArrayList<Linea> data = new ArrayList<>();
-        data.add(new Linea(1,"Linea 54","micro","/img/454.jpg","#aa4431"));
-        data.add(new Linea(1,"Linea 53","micro","/img/454.jpg","#aa4431"));
-        data.add(new Linea(1,"Linea 52","micro","/img/454.jpg","#aa4431"));
-        data.add(new Linea(1,"Linea 51","micro","/img/454.jpg","#aa4431"));
-        data.add(new Linea(1,"Linea 50","micro","/img/454.jpg","#aa4431"));
-        adapter = new LineaAdapter(data) {
-            @Override
-            public void itemClick(int pos) {
-
-                String nombre = adapter.getItem(pos).getNombre();
-                Toast.makeText(getApplicationContext(),nombre,Toast.LENGTH_SHORT).show();
-                /*Intent i = new Intent(getActivity(), ListaCarreraActivity.class);
-                i.putExtra("nombre",nombre);
-                startActivity(i);*/
-
-            }
-        };
-        recyclerView = (RecyclerView)findViewById(R.id.recyclerView);
-        LinearLayoutManager mLayoutManager = new LinearLayoutManager(this);
-        recyclerView.setLayoutManager(mLayoutManager);
-        recyclerView.setAdapter(adapter);
-
+        setTitle("Transporte");
+        obtenerLineas();
     }
 
+    private void obtenerLineas(){
+        int id = getIntent().getIntExtra("id",-1);
+        new RestGetLineas(id) {
+            @Override
+            protected void onError(String code) {
+                Toast.makeText(getApplicationContext(),code,Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            protected void onSuccess(String s) {
+                ArrayList<Linea> lista = new ArrayList<>();
+                try {
+                    JSONObject jsonObject = new JSONObject(s);
+                    JSONArray datos = jsonObject.getJSONArray("datos");
+                    for (int i = 0; i < datos.length(); i++) {
+                        lista.add(Linea.parser(datos.getJSONObject(i)));
+                    }
+                }catch (Exception e){}
+
+                adapter = new LineaAdapter(lista) {
+                    @Override
+                    public void itemClick(int pos) {
+
+                        String nombre = adapter.getItem(pos).getNombre();
+                        Toast.makeText(getApplicationContext(),nombre,Toast.LENGTH_SHORT).show();
+
+                    }
+                };
+                recyclerView = (RecyclerView)findViewById(R.id.recyclerView);
+                LinearLayoutManager mLayoutManager = new LinearLayoutManager(TransporteActivity.this);
+                recyclerView.setLayoutManager(mLayoutManager);
+                recyclerView.setAdapter(adapter);
+            }
+        }.runDialog(this);
+    }
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {

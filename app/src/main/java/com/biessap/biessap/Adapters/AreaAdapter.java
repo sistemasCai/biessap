@@ -5,6 +5,8 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import com.biessap.biessap.R;
+import com.biessap.biessap.models.Area;
+
 import android.view.ViewGroup;
 import android.widget.Filter;
 import android.widget.Filterable;
@@ -16,10 +18,10 @@ import java.util.ArrayList;
 
 public abstract class AreaAdapter extends RecyclerView.Adapter<AreaAdapter.AreaViewHolder> implements Filterable {
 
-    ArrayList<String> lista;
-    ArrayList<String>  listaFilter;
+    ArrayList<Area> lista;
+    ArrayList<Area>  listaFilter;
 
-    public AreaAdapter(ArrayList<String> lista) {
+    public AreaAdapter(ArrayList<Area> lista) {
         this.lista = lista;
         listaFilter = new ArrayList<>();
         listaFilter.addAll(lista);
@@ -33,14 +35,14 @@ public abstract class AreaAdapter extends RecyclerView.Adapter<AreaAdapter.AreaV
         return areaViewHolder;
     }
 
-    public String getItem(int i){
+    public Area getItem(int i){
         return listaFilter.get(i);
     }
 
     @Override
     public void onBindViewHolder(@NonNull AreaViewHolder holder, int position) {
-        String area = listaFilter.get(position);
-        holder.titulo.setText(area);
+        Area area = listaFilter.get(position);
+        holder.titulo.setText(area.getNombre());
     }
 
     @Override
@@ -54,7 +56,7 @@ public abstract class AreaAdapter extends RecyclerView.Adapter<AreaAdapter.AreaV
                     listaFilter.addAll(lista);
                 }else{
                     for (int i = 0; i < lista.size(); i++) {
-                        if(lista.get(i).toLowerCase().contains(texto.toLowerCase())){
+                        if(lista.get(i).getNombre().toLowerCase().contains(texto.toLowerCase())){
                             listaFilter.add(lista.get(i));
                         }
                     }

@@ -22,14 +22,14 @@ public class Session {
             String nombre = (data.getString("name")=="null")?"":data.getString("name");
             String correo = (data.getString("email") == "null") ? "":data.getString("email");
             String avatar = (data.getString("avatar") == "null") ? "":data.getString("avatar");
-            String es_premium = (data.getString("es_premium")=="null")?"":data.getString("es_premium");
-            String dio_psa = (data.getString("dio_psa") == "null") ? "":data.getString("dio_psa");
+            String es_premium = (data.getString("premium")=="null")?"":data.getString("premium");
+            String celular = (data.getString("celular")=="null")?"":data.getString("celular");
             editor.putInt("id", data.getInt("id"));
             editor.putString("name", nombre);
             editor.putString("email", correo);
             editor.putString("avatar", avatar);
-            editor.putString("es_premium", es_premium);
-            editor.putString("dio_psa",dio_psa);
+            editor.putString("premium", es_premium);
+            editor.putString("celular",celular);
             editor.apply();
             return true;
         }catch (Exception e){
@@ -46,6 +46,7 @@ public class Session {
         editor.putString("avatar", session.getAvatar());
         editor.putString("es_premium", session.getEs_premium());
         editor.putString("dio_psa",session.getDio_psa());
+        editor.putString("celular",session.getCelular());
         editor.apply();
         return true;
     }
@@ -59,7 +60,8 @@ public class Session {
           prefsLogin.getString("email",""),
           prefsLogin.getString("avatar",""),
                 prefsLogin.getString("es_premium",""),
-                prefsLogin.getString("dio_psa","")
+                prefsLogin.getString("dio_psa",""),
+                prefsLogin.getString("celular","")
         );
 
         return session;

@@ -13,7 +13,11 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
+
+import com.biessap.biessap.Activitys.Institutos.InstitutoActivity;
 import com.biessap.biessap.Activitys.OrientacionUniversitaria.PerfilProfesionalActivity;
+import com.biessap.biessap.Activitys.Psa.PsaAreaActivity;
+import com.biessap.biessap.Activitys.Psa.PsaPrincipalActivity;
 import com.biessap.biessap.Activitys.Universidades.UniversidadesActivity;
 import com.biessap.biessap.R;
 import com.biessap.biessap.system.Api;
@@ -30,8 +34,8 @@ public class MenuActivity extends AppCompatActivity
         setContentView(R.layout.activity_menu);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
-        new prueba().execute();
+        setTitle("");
+        //new prueba().execute();
 
 
         Log.i("datosSession",Session.getDataSession(this).toString());
@@ -47,7 +51,7 @@ public class MenuActivity extends AppCompatActivity
         CardView card_orientacion = findViewById(R.id.c_orientacion);
         CardView card_universidades = findViewById(R.id.c_universidades);
         CardView card_institutos = findViewById(R.id.c_institutos);
-
+        CardView c_psa = findViewById(R.id.c_psa);
         card_orientacion.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -67,20 +71,21 @@ public class MenuActivity extends AppCompatActivity
         card_institutos.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent i = new Intent(MenuActivity.this, InstitutoActivity.class);
+                startActivity(i);
             }
         });
+        c_psa.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(MenuActivity.this, PsaPrincipalActivity.class);
+                startActivity(i);
+            }
+        });
+
     }
 
 
-    class prueba extends AsyncTask<String,String,String>{
-
-        @Override
-        protected String doInBackground(String... strings) {
-            String s = Api.get("http://192.168.1.3/RRHHBrinks/public/listarempleadosreporte");
-            return s;
-        }
-    }
     @Override
     public void onBackPressed() {
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -120,8 +125,22 @@ public class MenuActivity extends AppCompatActivity
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
         int id = item.getItemId();
-
-
+        if(id == R.id.nav_activar){
+            DialogActivarPaquete dialogCarrera = new DialogActivarPaquete();
+            dialogCarrera.setCancelable(true);
+            dialogCarrera.show(getSupportFragmentManager());
+        }
+        if(id == R.id.nav_caducidad){
+            Intent i = new Intent(MenuActivity.this,CaducidadActivity.class);
+            startActivity(i);
+        }
+        if(id == R.id.nav_ayuda){
+            Intent i = new Intent(MenuActivity.this,AyudaActivity.class);
+        }
+        if(id == R.id.nav_mapa){
+            Intent i = new Intent(MenuActivity.this,MapsActivity.class);
+            startActivity(i);
+        }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);

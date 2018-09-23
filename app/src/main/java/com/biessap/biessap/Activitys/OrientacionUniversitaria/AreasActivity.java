@@ -54,7 +54,6 @@ public class AreasActivity extends AppCompatActivity implements CoreFragment.OnF
         TabPageAdapter adapter = new TabPageAdapter(getSupportFragmentManager());
         adapter.addFragment(new LicenciaturaFragment(),"Licenciatura");
         adapter.addFragment(new TecnicoSuperiorFragment(),"Tecnico Superior");
-        adapter.addFragment(new TecnicoMedioFragment(), "Tecnico Medio");
         pager.setAdapter(adapter);
     }
 

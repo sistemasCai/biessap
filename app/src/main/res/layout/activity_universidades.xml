@@ -44,22 +44,59 @@
         </LinearLayout>
 
     </ScrollView>
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:weightSum="2"
+    android:orientation="horizontal">
 
-    <Button
-        android:id="@+id/btnVer"
-        android:layout_width="250dp"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginBottom="10dp"
-        android:layout_marginTop="10dp"
-        android:layout_weight="0"
-        android:background="@drawable/boton_secundario"
-        android:foreground="?android:attr/selectableItemBackground"
-        android:padding="8dp"
-        android:text="Ver todas las universidades  y sus informaciones"
-        android:textAllCaps="false"
-        android:textColor="@color/blanco"
-        android:textSize="16sp" />
+        android:paddingRight="2dp"
+        android:layout_weight="1">
+
+        <Button
+            android:id="@+id/btnVer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_weight="0"
+            android:background="@drawable/boton_secundario"
+            android:foreground="?android:attr/selectableItemBackground"
+            android:padding="8dp"
+            android:text="Universidades"
+            android:textAllCaps="false"
+            android:textColor="@color/blanco"
+            android:textSize="16sp" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="2dp"
+        android:layout_weight="1">
+
+        <Button
+            android:id="@+id/btn_ir_carreras"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_weight="0"
+            android:background="@drawable/boton_secundario"
+            android:foreground="?android:attr/selectableItemBackground"
+            android:padding="8dp"
+            android:text="Carreras"
+            android:textAllCaps="false"
+            android:textColor="@color/blanco"
+            android:textSize="16sp" />
+    </LinearLayout>
+
+
+</LinearLayout>
 
 
 </LinearLayout>

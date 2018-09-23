@@ -1,18 +1,22 @@
 package com.biessap.biessap.models;
 
+import org.json.JSONObject;
+
 public class Linea {
     int id = 0;
     String nombre;
     String tipo;
-    String imagen;
     String color;
 
-    public Linea(int id, String nombre, String tipo, String imagen, String color) {
+    public Linea(int id, String nombre, String tipo, String color) {
         this.id = id;
         this.nombre = nombre;
         this.tipo = tipo;
-        this.imagen = imagen;
         this.color = color;
+    }
+
+    public Linea(){
+
     }
 
     public int getId() {
@@ -39,19 +43,28 @@ public class Linea {
         this.tipo = tipo;
     }
 
-    public String getImagen() {
-        return imagen;
-    }
-
-    public void setImagen(String imagen) {
-        this.imagen = imagen;
-    }
-
     public String getColor() {
         return color;
     }
 
     public void setColor(String color) {
         this.color = color;
+    }
+
+    public static Linea parser(JSONObject jsonObject){
+        Linea linea = new Linea();
+        try{
+            linea.setId(0);
+        }catch (Exception e){}
+        try{
+            linea.setColor(jsonObject.getString("color"));
+        }catch (Exception e){}
+        try{
+            linea.setNombre(jsonObject.getString("nombre"));
+        }catch (Exception e){}
+        try{
+            linea.setTipo(jsonObject.getString("tipo"));
+        }catch (Exception e){}
+        return linea;
     }
 }

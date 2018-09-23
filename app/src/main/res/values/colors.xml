@@ -9,6 +9,7 @@
     <color name="primary_light">#c5cae9</color>
     <color name="accent">#448aff</color>
     <color name="primary_text">#212121</color>
+    <color name="negro">#212121</color>
     <color name="secondary_text">#757575</color>
     <color name="icons">#FFFFFF</color>
     <color name="divider">#bdbdbd</color>
@@ -18,4 +19,7 @@
     <color name="plomo">#eceff1</color>
     <color name="fondo1">#b495b0cd</color>
     <color name="fondo2">#b4f3d398</color>
+
+    <color name="popup">#FAFAFA</color>
+
 </resources>

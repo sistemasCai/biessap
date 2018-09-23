@@ -36,6 +36,17 @@ public class UniversidadesActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        Button btn_ir_carreras = (Button) findViewById(R.id.btn_ir_carreras);
+        btn_ir_carreras.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(UniversidadesActivity.this,TodasLasCarrerasActivity.class);
+                Intent i = new Intent(UniversidadesActivity.this,TodasLasCarrerasActivity.class);
+                i.putExtra("tipo",1);
+                startActivity(intent);
+            }
+        });
     }
 
     @Override

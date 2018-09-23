@@ -1,8 +1,6 @@
 package com.biessap.biessap.Rest;
-
 import com.biessap.biessap.CoreApplication.CoreApiRest;
 import com.biessap.biessap.system.Api;
-
 import org.json.JSONObject;
 
 public abstract class RestLoginGoogle extends CoreApiRest {
