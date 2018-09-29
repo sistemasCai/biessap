@@ -5,12 +5,10 @@ import java.util.ArrayList;
 public class Materia {
     int id;
     String nombre;
-    ArrayList<Pregunta> preguntas;
 
-    public Materia(int id, String nombre, ArrayList<Pregunta> preguntas) {
+    public Materia(int id, String nombre) {
         this.id = id;
         this.nombre = nombre;
-        this.preguntas = preguntas;
     }
 
     public int getId() {
@@ -29,11 +27,4 @@ public class Materia {
         this.nombre = nombre;
     }
 
-    public ArrayList<Pregunta> getPreguntas() {
-        return preguntas;
-    }
-
-    public void setPreguntas(ArrayList<Pregunta> preguntas) {
-        this.preguntas = preguntas;
-    }
 }

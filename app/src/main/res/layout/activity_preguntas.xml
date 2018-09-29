@@ -19,10 +19,11 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="vertical"
-                android:layout_above="@+id/preguntas">
+                android:orientation="vertical">
 
                 <TextView
+                    android:layout_marginLeft="3dp"
+                    android:layout_marginRight="3dp"
                     android:id="@+id/text_pregunta"
                     android:layout_marginTop="10dp"
                     android:textAlignment="center"
@@ -43,265 +44,59 @@
                         android:id="@+id/radio1"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:onClick="onCheck"
                         android:text="respuesta 1" />
 
                     <RadioButton
                         android:id="@+id/radio2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:onClick="onCheck"
                         android:text="respuesta 2" />
 
                     <RadioButton
                         android:id="@+id/radio3"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:onClick="onCheck"
                         android:text="respuesta 3" />
 
                     <RadioButton
                         android:id="@+id/radio4"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:onClick="onCheck"
                         android:text="respuesta 4" />
-                </RadioGroup>
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:paddingRight="20dp">
-                    <Button
-                        android:foreground="?android:attr/selectableItemBackground"
-                        android:layout_alignParentEnd="true"
-                        android:id="@+id/btn_seguiente"
+                    <RadioButton
+                        android:id="@+id/radio5"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/blanco"
-                        android:textSize="10sp"
-                        android:background="@color/colorPrimary"
-                        android:text="Siguiente" />
-                </RelativeLayout>
+                        android:onClick="onCheck"
+                        android:text="respuesta 5" />
+                </RadioGroup>
 
             </LinearLayout>
-            <LinearLayout
-                android:id="@+id/preguntas"
-                android:padding="5dp"
-                android:layout_alignParentBottom="true"
+            <TableLayout
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="4dp"
+                android:layout_marginLeft="4dp"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-                <TextView
-                    android:id="@+id/text_materia1"
-                    android:layout_marginLeft="10dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="materia"/>
-                <LinearLayout
+                android:layout_height="250dp">
+                <GridView
+                    android:id="@+id/gridview"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:weightSum="10">
-                    <Button
-                        android:id="@+id/preg_1"
-                        style="@style/button_preguntas"
-                        android:text="1"/>
-                    <Button
-                        android:id="@+id/preg_2"
-                        style="@style/button_preguntas"
-                        android:text="2"/>
-                    <Button
-                        android:id="@+id/preg_3"
-                        style="@style/button_preguntas"
-                        android:text="3"/>
-                    <Button
-                        android:id="@+id/preg_4"
-                        style="@style/button_preguntas"
-                        android:text="4"/>
-                    <Button
-                        android:id="@+id/preg_5"
-                        style="@style/button_preguntas"
-                        android:text="5"/>
-                    <Button
-                        android:id="@+id/preg_6"
-                        style="@style/button_preguntas"
-                        android:text="6"/>
-                    <Button
-                        android:id="@+id/preg_7"
-                        style="@style/button_preguntas"
-                        android:text="7"/>
-                    <Button
-                        android:id="@+id/preg_8"
-                        style="@style/button_preguntas"
-                        android:text="8"/>
-                    <Button
-                        android:id="@+id/preg_9"
-                        style="@style/button_preguntas"
-                        android:text="9"/>
-                    <Button
-                        android:id="@+id/preg_10"
-                        style="@style/button_preguntas"
-                        android:text="10"/>
-                </LinearLayout>
-                <TextView
-                    android:id="@+id/text_materia2"
-                    android:layout_marginLeft="10dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="materia"/>
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:weightSum="10">
-                    <Button
-                        android:id="@+id/preg_11"
-                        style="@style/button_preguntas"
-                        android:text="11"/>
-                    <Button
-                        android:id="@+id/preg_12"
-                        style="@style/button_preguntas"
-                        android:text="12"/>
-                    <Button
-                        android:id="@+id/preg_13"
-                        style="@style/button_preguntas"
-                        android:text="13"/>
-                    <Button
-                        android:id="@+id/preg_14"
-                        style="@style/button_preguntas"
-                        android:text="14"/>
-                    <Button
-                        android:id="@+id/preg_15"
-                        style="@style/button_preguntas"
-                        android:text="15"/>
-                    <Button
-                        android:id="@+id/preg_16"
-                        style="@style/button_preguntas"
-                        android:text="16"/>
-                    <Button
-                        android:id="@+id/preg_17"
-                        style="@style/button_preguntas"
-                        android:text="17"/>
-                    <Button
-                        android:id="@+id/preg_18"
-                        style="@style/button_preguntas"
-                        android:text="18"/>
-                    <Button
-                        android:id="@+id/preg_19"
-                        style="@style/button_preguntas"
-                        android:text="19"/>
-                    <Button
-                        android:id="@+id/preg_20"
-                        style="@style/button_preguntas"
-                        android:text="20"/>
-                </LinearLayout>
-                <TextView
-                    android:id="@+id/text_materia3"
-                    android:layout_marginLeft="10dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="materia"/>
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:weightSum="10">
-                    <Button
-                        android:id="@+id/preg_21"
-                        style="@style/button_preguntas"
-                        android:text="21"/>
-                    <Button
-                        android:id="@+id/preg_22"
-                        style="@style/button_preguntas"
-                        android:text="22"/>
-                    <Button
-                        android:id="@+id/preg_23"
-                        style="@style/button_preguntas"
-                        android:text="23"/>
-                    <Button
-                        android:id="@+id/preg_24"
-                        style="@style/button_preguntas"
-                        android:text="24"/>
-                    <Button
-                        android:id="@+id/preg_25"
-                        style="@style/button_preguntas"
-                        android:text="25"/>
-                    <Button
-                        android:id="@+id/preg_26"
-                        style="@style/button_preguntas"
-                        android:text="26"/>
-                    <Button
-                        android:id="@+id/preg_27"
-                        style="@style/button_preguntas"
-                        android:text="27"/>
-                    <Button
-                        android:id="@+id/preg_28"
-                        style="@style/button_preguntas"
-                        android:text="28"/>
-                    <Button
-                        android:id="@+id/preg_29"
-                        style="@style/button_preguntas"
-                        android:text="29"/>
-                    <Button
-                        android:id="@+id/preg_30"
-                        style="@style/button_preguntas"
-                        android:text="30"/>
-                </LinearLayout>
-                <TextView
-                    android:id="@+id/text_materia4"
-                    android:layout_marginLeft="10dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="materia"/>
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:weightSum="10">
-                    <Button
-                        android:id="@+id/preg_31"
-                        style="@style/button_preguntas"
-                        android:text="31"/>
-                    <Button
-                        android:id="@+id/preg_32"
-                        style="@style/button_preguntas"
-                        android:text="32"/>
-                    <Button
-                        android:id="@+id/preg_33"
-                        style="@style/button_preguntas"
-                        android:text="33"/>
-                    <Button
-                        android:id="@+id/preg_34"
-                        style="@style/button_preguntas"
-                        android:text="34"/>
-                    <Button
-                        android:id="@+id/preg_35"
-                        style="@style/button_preguntas"
-                        android:text="35"/>
-                    <Button
-                        android:id="@+id/preg_36"
-                        style="@style/button_preguntas"
-                        android:text="36"/>
-                    <Button
-                        android:id="@+id/preg_37"
-                        style="@style/button_preguntas"
-                        android:text="37"/>
-                    <Button
-                        android:id="@+id/preg_38"
-                        style="@style/button_preguntas"
-                        android:text="38"/>
-                    <Button
-                        android:id="@+id/preg_39"
-                        style="@style/button_preguntas"
-                        android:text="39"/>
-                    <Button
-                        android:id="@+id/preg_40"
-                        style="@style/button_preguntas"
-                        android:text="40"/>
-                </LinearLayout>
-            </LinearLayout>
+                    android:layout_height="match_parent"
+                    android:numColumns="10"/>
+            </TableLayout>
+
             <Button
+                android:id="@+id/btn_finalizar"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
+                android:text="Finalizar Examen"
+                android:onClick="finalizar"
                 android:background="@color/colorPrimary"
-                android:textColor="@color/cardview_light_background"
-                android:text="Finalizar Examen"/>
+                android:textColor="@color/cardview_light_background"/>
         </LinearLayout>
     </android.support.v4.widget.NestedScrollView>
 

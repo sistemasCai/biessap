@@ -5,10 +5,12 @@ import com.biessap.biessap.system.Api;
 
 public abstract class RestIniciarPsa extends CoreApiRest {
 
+    int gestion_id;
     int area_id;
 
-    public RestIniciarPsa(int area_id) {
+    public RestIniciarPsa(int gestion_id,int area_id) {
         this.area_id = area_id;
+        this.gestion_id = gestion_id;
     }
 
     @Override
@@ -24,6 +26,6 @@ public abstract class RestIniciarPsa extends CoreApiRest {
 
     @Override
     protected String runService() {
-        return Api.get(configuracion.getBaseUrl() + "iniciar-psa/"+area_id);
+        return Api.get(configuracion.getBaseUrl() + "iniciar-psa/"+gestion_id + "/" + area_id);
     }
 }

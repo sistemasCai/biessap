@@ -1,14 +1,20 @@
 package com.biessap.biessap.Activitys.Psa;
 
+import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.GridView;
 import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.biessap.biessap.Adapters.PreguntaAdapter;
 import com.biessap.biessap.R;
 import com.biessap.biessap.Rest.RestIniciarPsa;
 import com.biessap.biessap.models.Materia;
@@ -20,21 +26,17 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
+import cn.pedant.SweetAlert.SweetAlertDialog;
+
 public class PreguntasActivity extends AppCompatActivity implements View.OnClickListener {
 
     int area_id;
-    int materiaIndex=0;
-    int preguntaIntex=0;
-    private static final int CANTIDAD_MATERIAS = 4;
-    private static final int CANTIDAD_PREGUNTAS = 10;
     TextView texto_pregunta;
-    RadioButton radio1,radio2, radio3,radio4;
+    RadioButton radio1,radio2, radio3,radio4,radio5;
     ArrayList<Materia> MateriaList;
-    Button preg_1,preg_2,preg_3,preg_4,preg_5,preg_6,preg_7,preg_8,preg_9,preg_10;
-    Button preg_11,preg_12,preg_13,preg_14,preg_15,preg_16,preg_17,preg_18,preg_19,preg_20;
-    Button preg_21,preg_22,preg_23,preg_24,preg_25,preg_26,preg_27,preg_28,preg_29,preg_30;
-    Button preg_31,preg_32,preg_33,preg_34,preg_35,preg_36,preg_37,preg_38,preg_39,preg_40;
-
+    int pregunta_actual = 0;
+    ArrayList<Pregunta> preguntas = new ArrayList<>();
+    RadioGroup radioGroup;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,72 +44,93 @@ public class PreguntasActivity extends AppCompatActivity implements View.OnClick
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         setTitle("Preguntas");
         area_id = getIntent().getIntExtra("area_id",-1);
-        TextView text_materia1 = findViewById(R.id.text_materia1);
         MateriaList = new ArrayList<>();
         obtenerPreguntas();
-
         texto_pregunta = findViewById(R.id.text_pregunta);
         radio1 = findViewById(R.id.radio1);
         radio2 = findViewById(R.id.radio2);
         radio3 = findViewById(R.id.radio3);
         radio4 = findViewById(R.id.radio4);
+        radio5 = findViewById(R.id.radio5);
+        radioGroup = findViewById(R.id.radioRespuestas);
 
-        TextView text_materia2 = findViewById(R.id.text_materia2);
-        TextView text_materia3 = findViewById(R.id.text_materia3);
-        TextView text_materia4 = findViewById(R.id.text_materia4);
-        TextView btn_siguiente = findViewById(R.id.btn_seguiente);
-        btn_siguiente.setOnClickListener(new View.OnClickListener() {
+    }
+
+    public void finalizar(View v){
+        SweetAlertDialog alertDialog = new SweetAlertDialog(PreguntasActivity.this,SweetAlertDialog.WARNING_TYPE);
+        alertDialog.setTitle("Simulador Psa");
+        alertDialog.setContentText("¿Desea Finalizar el examen?");
+        alertDialog.show();
+        alertDialog.setCancelButton("Cancelar", new SweetAlertDialog.OnSweetClickListener() {
             @Override
-            public void onClick(View v) {
-                preguntaIntex++;
-                if(preguntaIntex == CANTIDAD_PREGUNTAS){
-                    preguntaIntex = 0;
-                    materiaIndex = (materiaIndex + 1)%CANTIDAD_MATERIAS;
-                }
-                mostrarPregunta(materiaIndex,preguntaIntex);
-               // alert();
+            public void onClick(SweetAlertDialog sweetAlertDialog) {
+                alertDialog.dismiss();
             }
         });
-
-        text_materia1.setText("Lenguaje");
-        text_materia2.setText("Matematicas");
-        text_materia3.setText("Fisica");
-        text_materia4.setText("Ingles");
-
+        alertDialog.setConfirmButton("Confirmar", new SweetAlertDialog.OnSweetClickListener() {
+            @Override
+            public void onClick(SweetAlertDialog sweetAlertDialog) {
+                alertDialog.dismiss();
+                alert();
+            }
+        });
+    }
+    public void onCheck(View v){
+        int id = radioGroup.getCheckedRadioButtonId();
+        Pregunta pregunta = preguntas.get(pregunta_actual);
+        pregunta.setCheckId(id);
+        int indexRespondida = obtenerRadioCheck();
+        pregunta.setRespondida(indexRespondida);
     }
 
-    private void prepararButton(){
-        preg_1 = findViewById(R.id.preg_1);
-        preg_2 = findViewById(R.id.preg_2);
-        preg_3 = findViewById(R.id.preg_3);
-        preg_4 = findViewById(R.id.preg_4);
-        preg_5 = findViewById(R.id.preg_5);
-        preg_6 = findViewById(R.id.preg_6);
-        preg_7 = findViewById(R.id.preg_7);
-        preg_8 = findViewById(R.id.preg_8);
-        preg_9 = findViewById(R.id.preg_9);
-        preg_10 = findViewById(R.id.preg_10);
-        preg_11 = findViewById(R.id.preg_11);
-        preg_12 = findViewById(R.id.preg_12);
-        preg_13 = findViewById(R.id.preg_1);
-        preg_14 = findViewById(R.id.preg_1);
-        preg_15 = findViewById(R.id.preg_1);
-        preg_16 = findViewById(R.id.preg_1);
-        preg_17 = findViewById(R.id.preg_1);
-
+    private int obtenerRadioCheck(){
+           int n = -1;
+        if(radio1.isChecked()){
+               n = 0;
+        }
+        if(radio2.isChecked()){
+            n = 1;
+        }
+        if(radio3.isChecked()){
+            n = 2;
+        }
+        if(radio4.isChecked()){
+            n = 3;
+        }
+        if(radio5.isChecked()){
+            n = 4;
+        }
+        return n;
     }
+
     private void procesarPreguntas(){
-        mostrarPregunta(materiaIndex,preguntaIntex);
+        String num[] = new String[40];
+        for (int i = 0; i < num.length; i++) {
+            num[i] = (i+1) + "";
+        }
+        GridView gridView = (GridView)findViewById(R.id.gridview);
+        PreguntaAdapter booksAdapter = new PreguntaAdapter(this, num);
+        gridView.setAdapter(booksAdapter);
+        gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Pregunta pregunta = preguntas.get(pregunta_actual);
+                int respuestaIndex = obtenerRadioCheck();
+                pregunta.setRespondida(respuestaIndex);
+                pregunta_actual = position;
+                mostrarPregunta(pregunta_actual);
+                view.setBackgroundColor(Color.YELLOW);
+            }
+        });
+        mostrarPregunta(pregunta_actual);
     }
 
-    private void mostrarPregunta(int materiaIndex, int preguntaIndex){
+    private void mostrarPregunta(int preguntaIntex){
         try{
-
-            Materia materia = MateriaList.get(materiaIndex);
-            ArrayList<Pregunta> preguntas = materia.getPreguntas();
-            String textoPregunta = preguntas.get(preguntaIndex).getTexto();
+            Pregunta pregunta = preguntas.get(preguntaIntex);
+            String textoPregunta = pregunta.getTexto();
             texto_pregunta.setText(textoPregunta);
-            ArrayList<Respuesta> respuestas = preguntas.get(preguntaIndex).getRespuestas();
+            ArrayList<Respuesta> respuestas = preguntas.get(preguntaIntex).getRespuestas();
             for (int i = 0; i < respuestas.size(); i++) {
                 Respuesta respuesta = respuestas.get(i);
                 switch (i){
@@ -120,20 +143,29 @@ public class PreguntasActivity extends AppCompatActivity implements View.OnClick
                     case 2:
                         radio3.setText(respuesta.getTexto());
                         break;
-                    default:
+                    case 3 :
                         radio4.setText(respuesta.getTexto());
+                        break;
+                    default:
+                        radio5.setText(respuesta.getTexto());
                         break;
                 }
             }
+            if(pregunta.getCheckId() != 0){
+                radioGroup.check(pregunta.getCheckId());
+            }
+            else{
+                radioGroup.clearCheck();
+            }
+
         }catch (Exception e){
             Toast.makeText(getApplicationContext(),e.getMessage(),Toast.LENGTH_SHORT).show();
         }
     }
 
     private void alert(){
-        // Create Alert using Builder
         CFAlertDialog.Builder builder = new CFAlertDialog.Builder(this)
-                .setDialogStyle(CFAlertDialog.CFAlertStyle.ALERT)
+                .setDialogStyle(CFAlertDialog.CFAlertStyle.NOTIFICATION)
                 .setTitle("You've hit the limit")
                 .setMessage("Looks like you've hit your usage limit. Upgrade to our paid plan to continue without any limits.")
                 .addButton("UPGRADE", -1, -1, CFAlertDialog.CFAlertActionStyle.POSITIVE, CFAlertDialog.CFAlertActionAlignment.END, (dialog, which) -> {
@@ -146,7 +178,7 @@ public class PreguntasActivity extends AppCompatActivity implements View.OnClick
     }
 
     private void obtenerPreguntas(){
-        new RestIniciarPsa(area_id) {
+        new RestIniciarPsa(1,3) {
             @Override
             protected void onError(String code) {
                 Toast.makeText(getApplicationContext(),code+"",Toast.LENGTH_SHORT).show();
@@ -160,8 +192,8 @@ public class PreguntasActivity extends AppCompatActivity implements View.OnClick
                     JSONArray datos = jsonObject.getJSONArray("datos");
                     for (int i = 0; i < datos.length(); i++) { // materias
                         JSONObject jsonMaterias = datos.getJSONObject(i);
+                        int materiaId = jsonMaterias.getInt("id");
                         JSONArray preguntasJSON = jsonMaterias.getJSONArray("preguntas");
-                        ArrayList<Pregunta> preguntas = new ArrayList<>();
                         for (int j = 0; j < preguntasJSON.length(); j++) {
                                 JSONObject preguntaObject = preguntasJSON.getJSONObject(j);
                                 JSONArray respuestasJSON = preguntaObject.getJSONArray("respuestas");
@@ -180,15 +212,16 @@ public class PreguntasActivity extends AppCompatActivity implements View.OnClick
                                     preguntaObject.getInt("id"),
                                     preguntaObject.getString("texto"),
                                     preguntaObject.getString("imagen"),
-                                    respuestas
+                                    respuestas,
+                                    materiaId
+
                             );
                             preguntas.add(pregunta);
                         }
 
                         Materia materia = new Materia(
                                 jsonMaterias.getInt("id"),
-                                jsonMaterias.getString("nombre"),
-                                preguntas
+                                jsonMaterias.getString("nombre")
                         );
                     MateriaList.add(materia);
                     }
@@ -220,102 +253,6 @@ public class PreguntasActivity extends AppCompatActivity implements View.OnClick
     @Override
     public void onClick(View v) {
         int id = v.getId();
-        switch (id){
-            case R.id.preg_1:
-                mostrarPregunta(0,0);
-                Toast.makeText(getApplicationContext(),"preg_1",Toast.LENGTH_SHORT).show();
-                break;
-            case R.id.preg_2:
-                mostrarPregunta(0,1);
-                Toast.makeText(getApplicationContext(),"preg_2",Toast.LENGTH_SHORT).show();
-                break;
-            case R.id.preg_3:
-                mostrarPregunta(0,2);
-                Toast.makeText(getApplicationContext(),"preg_3",Toast.LENGTH_SHORT).show();
-                break;
-            case R.id.preg_4:
-                mostrarPregunta(0,3);
-                Toast.makeText(getApplicationContext(),"preg_4",Toast.LENGTH_SHORT).show();
-                break;
-            case R.id.preg_5:
-                break;
-            case R.id.preg_6:
-                break;
-            case R.id.preg_7:
-                break;
-            case R.id.preg_8:
-                break;
-            case R.id.preg_9:
-                break;
-            case R.id.preg_10:
-                break;
 
-
-            case R.id.preg_11:
-                break;
-            case R.id.preg_12:
-                break;
-            case R.id.preg_13:
-                break;
-            case R.id.preg_14:
-                break;
-            case R.id.preg_15:
-                break;
-            case R.id.preg_16:
-                break;
-            case R.id.preg_17:
-                break;
-            case R.id.preg_18:
-                break;
-            case R.id.preg_19:
-                break;
-            case R.id.preg_20:
-                break;
-
-
-            case R.id.preg_21:
-                break;
-            case R.id.preg_22:
-                break;
-            case R.id.preg_23:
-                break;
-            case R.id.preg_24:
-                break;
-            case R.id.preg_25:
-                break;
-            case R.id.preg_26:
-                break;
-            case R.id.preg_27:
-                break;
-            case R.id.preg_28:
-                break;
-            case R.id.preg_29:
-                break;
-            case R.id.preg_30:
-                break;
-
-
-            case R.id.preg_31:
-                break;
-            case R.id.preg_32:
-                break;
-            case R.id.preg_33:
-                break;
-            case R.id.preg_34:
-                break;
-            case R.id.preg_35:
-                break;
-            case R.id.preg_36:
-                break;
-            case R.id.preg_37:
-                break;
-            case R.id.preg_38:
-                break;
-            case R.id.preg_39:
-                break;
-            case R.id.preg_40:
-                break;
-
-        }
     }
 }
